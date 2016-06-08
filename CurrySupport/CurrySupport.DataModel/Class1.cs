@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CurrySupport.Model
+namespace CurrySupport.DataModel
 {
-    public class CurrySupportDBContext
+    public class Class1
     {
     }
 }
