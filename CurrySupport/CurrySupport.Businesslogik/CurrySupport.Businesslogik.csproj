@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>cde965f9-d07e-4f13-acee-90c0237110c9</ProjectGuid>
+    <ProjectGuid>6b732635-90d4-48c3-bd35-2620a1ea1232</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CurrySupport.Businesslogik</RootNamespace>

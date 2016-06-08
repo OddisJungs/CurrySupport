@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>261adfce-f7f4-4289-bce9-1f04e19e9074</ProjectGuid>
+    <ProjectGuid>ec4f0c8d-230e-496e-9c98-9a03b928924f</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CurrySupport.DataModel</RootNamespace>
