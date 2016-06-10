@@ -24,5 +24,50 @@ namespace CurrySupport.GUI
         {
             InitializeComponent();
         }
+
+        private void TabControl1_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {   
+
+            if (TabItemTicketlist.IsSelected)
+            {
+                TextBlockTicketList.Background = Brushes.Blue;
+            }
+            else
+            {
+                TextBlockTicketList.Background = Brushes.LightSkyBlue;
+            }
+            if (TabItemTicket.IsSelected)
+            {
+                TextBlockTicket.Background = Brushes.Blue;
+            }
+            else
+            {
+                TextBlockTicket.Background = Brushes.LightSkyBlue;
+            }
+            if (TabItemKundenHistory.IsSelected)
+            {
+                TextBlockKundenHistory.Background = Brushes.Blue;
+            }
+            else
+            {
+                TextBlockKundenHistory.Background = Brushes.LightSkyBlue;
+            }
+            if (TabItemPersonen.IsSelected)
+            {
+                TextBlockPersonen.Background = Brushes.Blue;
+            }
+            else
+            {
+                TextBlockPersonen.Background = Brushes.LightSkyBlue;
+            }
+            if (TabItemKategorien.IsSelected)
+            {
+                TextBlockKategorien.Background = Brushes.Blue;
+            }
+            else
+            {
+                TextBlockKategorien.Background = Brushes.LightSkyBlue;
+            }
+        }
     }
 }

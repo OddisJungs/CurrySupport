@@ -5,8 +5,111 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CurrySupport.GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="CurrySupport" 
+        Height="700" 
+        Width="1200">
     <Grid>
-        
+        <TabControl SelectionChanged="TabControl1_OnSelectionChanged" 
+                    Margin="5, 10, 5, 5" 
+                    x:Name="TabControl1"
+                    BorderBrush="Blue"
+                    BorderThickness="1">
+            <TabItem Padding="0" 
+                     Margin="0,0,5,0" 
+                     x:Name="TabItemTicketlist">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ticketliste" 
+                                   Background="LightSkyBlue" 
+                                   Padding="5" FontSize="18" 
+                                   Foreground="White" 
+                                   Width="195" 
+                                   TextAlignment="Center" 
+                                   x:Name="TextBlockTicketList"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ListView Margin="5" Name="TicketList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="TicketID" Width="100" />
+                                <GridViewColumn Header="Priorität" Width="70" />
+                                <GridViewColumn Header="Status" Width="150" />
+                                <GridViewColumn Header="Bearbeiter" Width="150" />
+                                <GridViewColumn Header="Kunde" Width="150" />
+                                <GridViewColumn Header="Datum" Width="100" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>             
+            </TabItem>
+            <TabItem Padding="0" 
+                     Margin="5,0,5,0" 
+                     x:Name="TabItemTicket">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ticket" 
+                                   Background="LightSkyBlue" 
+                                   Padding="5" 
+                                   FontSize="18" 
+                                   Foreground="White" 
+                                   Width="200" 
+                                   TextAlignment="Center"
+                                   x:Name="TextBlockTicket"/>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem Padding="0" 
+                     Margin="5,0,5,0" 
+                     x:Name="TabItemKundenHistory">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Kunden History" 
+                                   Background="LightSkyBlue" 
+                                   Padding="5" 
+                                   FontSize="18" 
+                                   Foreground="White" 
+                                   Width="200" 
+                                   TextAlignment="Center"
+                                   x:Name="TextBlockKundenHistory"/>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem Padding="0" 
+                     Margin="5,0,5,0" 
+                     x:Name="TabItemPersonen">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Personen" 
+                                   Background="LightSkyBlue" 
+                                   Padding="5" 
+                                   FontSize="18" 
+                                   Foreground="White" 
+                                   Width="200" 
+                                   TextAlignment="Center"
+                                   x:Name="TextBlockPersonen"/>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem Padding="0" 
+                     Margin="5,0,5,0" 
+                     x:Name="TabItemKategorien">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Kategorien" 
+                                   Background="LightSkyBlue" 
+                                   Padding="5" FontSize="18" 
+                                   Foreground="White" 
+                                   Width="200" 
+                                   TextAlignment="Center"
+                                   x:Name="TextBlockKategorien"/>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
