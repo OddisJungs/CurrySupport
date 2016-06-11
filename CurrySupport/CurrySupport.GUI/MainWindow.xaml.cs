@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CurrySupport.Businesslogik;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,11 @@ namespace CurrySupport.GUI
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new TicketListeViewModel();
         }
 
         private void TabControl1_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {   
-
             if (TabItemTicketlist.IsSelected)
             {
                 TextBlockTicketList.Background = Brushes.Blue;
