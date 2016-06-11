@@ -60,7 +60,8 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="140">Löschen</Button>
+                                Width="140"
+                                Click="ButtonLöschen_OnClick">Löschen</Button>
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -69,7 +70,8 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="140">Bearbeiten</Button>                        
+                                Width="140"
+                                Click="ButtonBearbeiten_OnClick">Bearbeiten</Button>                        
                     </StackPanel>
                 </Grid>
             </TabItem>
