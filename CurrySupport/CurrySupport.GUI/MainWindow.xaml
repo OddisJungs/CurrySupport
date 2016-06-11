@@ -13,7 +13,7 @@
                     Margin="5, 10, 5, 5" 
                     x:Name="TabControl1"
                     BorderBrush="Blue"
-                    BorderThickness="1">
+                    BorderThickness="1, 5, 1, 1">
             <TabItem Padding="0" 
                      Margin="0,0,5,0" 
                      x:Name="TabItemTicketlist">
@@ -21,7 +21,8 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Ticketliste" 
                                    Background="LightSkyBlue" 
-                                   Padding="5" FontSize="18" 
+                                   Padding="5" 
+                                   FontSize="18" 
                                    Foreground="White" 
                                    Width="195" 
                                    TextAlignment="Center" 
@@ -31,9 +32,11 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <ListView Margin="5,5,5,88.5" Name="TicketList" Grid.RowSpan="2" ItemsSource="{Binding Tickets}" >
+                    <ListView Margin="5,5,5,5" 
+                              Name="TicketList" 
+                              ItemsSource="{Binding Tickets}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="TicketID" Width="100" DisplayMemberBinding="{Binding Path=Id}"/>
@@ -45,6 +48,29 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
+                    <StackPanel Grid.Row="1"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal"
+                                Height="50">
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="140">Löschen</Button>
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="140">Bearbeiten</Button>                        
+                    </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Padding="0" 
