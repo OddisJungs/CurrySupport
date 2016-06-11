@@ -37,7 +37,10 @@ namespace CurrySupport.DataModel.Migrations
                 new Unterkategorie() { Id = 1, Bezeichnung = "Hardware Fehler", Aktiv = true, Kategorie = context.AlleKategorien.FirstOrDefault(x => x.Id == 1) });
 
             context.AlleRollen.AddOrUpdate(x => x.Id,
-                new Rolle() { Id = 1, Bezeichnung = "Administrator" });
+                new Rolle() { Id = 1, Bezeichnung = "Bearbeiter" });
+
+            context.AlleRollen.AddOrUpdate(x => x.Id,
+                new Rolle() { Id = 2, Bezeichnung = "Kunde" });
 
             context.AllePersonen.AddOrUpdate(x => x.Id,
                 new Person() { Id = 1, Name = "Bürgisser", Vorname = "Reto", Telefonnummer = "0417505234", Adresse = "Eggstrasse 2", Aktiv = true, Rolle = context.AlleRollen.FirstOrDefault(x => x.Id == 1) });
