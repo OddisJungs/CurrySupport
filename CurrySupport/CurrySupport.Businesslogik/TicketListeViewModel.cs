@@ -18,7 +18,7 @@ namespace CurrySupport.Businesslogik
 
         private CurrySupportContext dbContext;
         
-        private ObservableCollection<Ticket> Tickets { get; set; }
+        public ObservableCollection<Ticket> Tickets { get; set; }
 
     }
 }

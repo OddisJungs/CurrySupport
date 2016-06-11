@@ -29,11 +29,10 @@ namespace CurrySupport.GUI
 
         private void TabControl1_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // TODO: Das könntest du schöner machen.. vieleicht so:foreach (TabItem item in TabControl1.Items.OfType<TabItem>())
             if (TabItemTicketlist.IsSelected)
             {
-                TextBlockTicketList.Background = Brushes.Blue;
                 DataContext = new TicketListeViewModel();
+                TextBlockTicketList.Background = Brushes.Blue;
             }
             else
             {

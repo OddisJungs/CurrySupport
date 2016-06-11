@@ -24,9 +24,9 @@ namespace CurrySupport.DataModel
         [Required]
         public int Priorität { get; set; }
 
-        public DateTime Erstellungsdatum { get; set; }
+        public DateTime? Erstellungsdatum { get; set; }
 
-        public DateTime Aenderungsdatum { get; set; }
+        public DateTime? Aenderungsdatum { get; set; }
 
         public virtual ObservableCollection<Person> Personen { get; set; }
 

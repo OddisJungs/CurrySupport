@@ -33,10 +33,10 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <ListView Margin="5" Name="TicketList">
+                    <ListView Margin="5,5,5,88.5" Name="TicketList" Grid.RowSpan="2">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="TicketID" Width="100" />
+                                <GridViewColumn Header="TicketID" Width="100" DisplayMemberBinding="{Binding Id}"/>
                                 <GridViewColumn Header="Priorität" Width="70" />
                                 <GridViewColumn Header="Status" Width="150" />
                                 <GridViewColumn Header="Bearbeiter" Width="150" />
@@ -45,7 +45,7 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                </Grid>             
+                </Grid>
             </TabItem>
             <TabItem Padding="0" 
                      Margin="5,0,5,0" 
