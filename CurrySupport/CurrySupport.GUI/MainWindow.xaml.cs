@@ -72,5 +72,14 @@ namespace CurrySupport.GUI
             }
         }
 
+        private void ButtonBearbeiten_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonLöschen_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
