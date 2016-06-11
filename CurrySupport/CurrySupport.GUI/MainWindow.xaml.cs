@@ -71,5 +71,6 @@ namespace CurrySupport.GUI
                 TextBlockKategorien.Background = Brushes.LightSkyBlue;
             }
         }
+
     }
 }
