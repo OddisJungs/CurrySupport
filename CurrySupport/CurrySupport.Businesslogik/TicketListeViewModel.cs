@@ -1,6 +1,7 @@
 ﻿using CurrySupport.DataModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,14 +13,12 @@ namespace CurrySupport.Businesslogik
         public TicketListeViewModel()
         {
             dbContext = new CurrySupportContext();
-        }
-
-        ~TicketListeViewModel()
-        {
-            dbContext.SaveChanges();
+            Tickets = new ObservableCollection<Ticket>(dbContext.AlleTickets.ToList());
         }
 
         private CurrySupportContext dbContext;
+        
+        private ObservableCollection<Ticket> Tickets { get; set; }
 
     }
 }
