@@ -132,7 +132,7 @@
                         <RowDefinition/>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <ListView Name="Personen" ItemsSource="{Binding Personen}">
+                    <ListView Name="Personen" SelectedItem="{Binding AusgewähltePerson}" ItemsSource="{Binding Personen}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Vorname" Width="200" DisplayMemberBinding="{Binding Path=Vorname}" ></GridViewColumn>
@@ -147,8 +147,8 @@
                         <TextBlock Margin="10,5" Text="Telefonnummer"></TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Column="2">
-                        <TextBox Margin="10,5"></TextBox>
-                        <TextBox Margin="10,5"></TextBox>
+                        <TextBox Margin="10,5" Text="{Binding Path=AusgewähltePerson.Name}"></TextBox>
+                        <TextBox Margin="10,5" Text="{Binding Path=AusgewähltePerson.Vorname}"></TextBox>
                         <TextBox Margin="10,5"></TextBox>
                         <TextBox Margin="10,5"></TextBox>
                     </StackPanel>

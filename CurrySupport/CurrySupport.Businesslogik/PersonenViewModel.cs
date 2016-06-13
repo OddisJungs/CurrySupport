@@ -2,22 +2,37 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CurrySupport.Businesslogik
 {
-    public class PersonenViewModel
+    public class PersonenViewModel : BaseViewModel
     {
         public PersonenViewModel()
         { 
             dbContext = new CurrySupportContext();
             Personen = new ObservableCollection<Person>(dbContext.AllePersonen);
+            ausgewähltePerson = new Person();
         }
-
-        private CurrySupportContext dbContext;
         public ObservableCollection<Person> Personen { get; set; }
-        public Person SelectedPerson { get; set; }
+        public Person AusgewähltePerson
+        {
+            get
+            {
+                return ausgewähltePerson;
+            }
+            set
+            {
+                ausgewähltePerson = value;
+                RaisePropertyChanged("AusgewähltePerson");
+            }
+        }
+        
+
+        private Person ausgewähltePerson;
+        private CurrySupportContext dbContext;
     }
 }
