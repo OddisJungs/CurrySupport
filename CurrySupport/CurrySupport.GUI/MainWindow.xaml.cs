@@ -56,6 +56,7 @@ namespace CurrySupport.GUI
             }
             if (TabItemPersonen.IsSelected)
             {
+                DataContext = new PersonenViewModel();
                 TextBlockPersonen.Background = Brushes.Blue;
             }
             else
