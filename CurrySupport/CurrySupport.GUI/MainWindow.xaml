@@ -149,8 +149,8 @@
                     <StackPanel Grid.Column="2">
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Name}"></TextBox>
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Vorname}"></TextBox>
-                        <TextBox Margin="10,5"></TextBox>
-                        <TextBox Margin="10,5"></TextBox>
+                        <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Adresse}"></TextBox>
+                        <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Telefonnummer}"></TextBox>
                     </StackPanel>
                     <Button Grid.Row="1"  Grid.Column="0" Height="30"
                                 FontSize="14"
