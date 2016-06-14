@@ -15,24 +15,24 @@ namespace CurrySupport.Businesslogik
         { 
             dbContext = new CurrySupportContext();
             Personen = new ObservableCollection<Person>(dbContext.AllePersonen);
-            ausgewähltePerson = new Person();
+            ausgewaehltePerson = new Person();
         }
         public ObservableCollection<Person> Personen { get; set; }
-        public Person AusgewähltePerson
+        public Person AusgewaehltePerson
         {
             get
             {
-                return ausgewähltePerson;
+                return ausgewaehltePerson;
             }
             set
             {
-                ausgewähltePerson = value;
-                RaisePropertyChanged("AusgewähltePerson");
+                ausgewaehltePerson = value;
+                RaisePropertyChanged("AusgewaehltePerson");
             }
         }
         
 
-        private Person ausgewähltePerson;
+        private Person ausgewaehltePerson;
         private CurrySupportContext dbContext;
     }
 }

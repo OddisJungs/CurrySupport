@@ -29,7 +29,7 @@ namespace CurrySupport.GUI
 
         private void TabControl1_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (TabItemTicketlist.IsSelected)
+            if (TabItemTicketlist.IsSelected && DataContext.GetType() != typeof(TicketListeViewModel))
             {
                 DataContext = new TicketListeViewModel();
                 TextBlockTicketList.Background = Brushes.Blue;
@@ -54,7 +54,7 @@ namespace CurrySupport.GUI
             {
                 TextBlockKundenHistory.Background = Brushes.LightSkyBlue;
             }
-            if (TabItemPersonen.IsSelected)
+            if (TabItemPersonen.IsSelected && DataContext.GetType() != typeof(PersonenViewModel))
             {
                 DataContext = new PersonenViewModel();
                 TextBlockPersonen.Background = Brushes.Blue;
