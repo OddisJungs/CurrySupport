@@ -190,7 +190,7 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="140">Abbrechen</Button>
+                                Width="140" Click="PersonenAbbrechenButton_Click">Abbrechen</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>

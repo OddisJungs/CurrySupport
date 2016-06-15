@@ -92,5 +92,10 @@ namespace CurrySupport.GUI
         {
             ((PersonenViewModel)DataContext).AusgewaehltePersonLöschen();
         }
+
+        private void PersonenAbbrechenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((PersonenViewModel)DataContext).PersonAuswahlAufheben();
+        }
     }
 }

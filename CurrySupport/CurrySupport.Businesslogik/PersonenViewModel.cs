@@ -55,6 +55,11 @@ namespace CurrySupport.Businesslogik
             ausgewaehltePerson = new Person();
         }
 
+        public void PersonAuswahlAufheben()
+        {
+            AusgewaehltePerson = new Person();
+        }
+
         private Person ausgewaehltePerson;
         private CurrySupportContext dbContext;
     }
