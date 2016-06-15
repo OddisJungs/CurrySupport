@@ -29,9 +29,12 @@ namespace CurrySupport.GUI
 
         private void TabControl1_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (TabItemTicketlist.IsSelected && DataContext.GetType() != typeof(TicketListeViewModel))
+            if (TabItemTicketlist.IsSelected)
             {
-                DataContext = new TicketListeViewModel();
+                if (DataContext.GetType() != typeof(TicketListeViewModel))
+                {
+                    DataContext = new TicketListeViewModel();
+                }
                 TextBlockTicketList.Background = Brushes.Blue;
             }
             else
@@ -54,9 +57,12 @@ namespace CurrySupport.GUI
             {
                 TextBlockKundenHistory.Background = Brushes.LightSkyBlue;
             }
-            if (TabItemPersonen.IsSelected && DataContext.GetType() != typeof(PersonenViewModel))
+            if (TabItemPersonen.IsSelected)
             {
-                DataContext = new PersonenViewModel();
+                if (DataContext.GetType() != typeof(PersonenViewModel))
+                {
+                    DataContext = new PersonenViewModel();
+                }
                 TextBlockPersonen.Background = Brushes.Blue;
             }
             else
@@ -96,6 +102,11 @@ namespace CurrySupport.GUI
         private void PersonenAbbrechenButton_Click(object sender, RoutedEventArgs e)
         {
             ((PersonenViewModel)DataContext).PersonAuswahlAufheben();
+        }
+
+        private void PersonenÜbernehmenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((PersonenViewModel)DataContext).AusgewaehltePersonÄnderungÜbernehmen();
         }
     }
 }

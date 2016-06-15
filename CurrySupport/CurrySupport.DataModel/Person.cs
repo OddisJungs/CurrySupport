@@ -32,7 +32,6 @@ namespace CurrySupport.DataModel
         [Required]
         public bool Aktiv { get; set; }
 
-        [Required]
         public virtual Rolle Rolle { get; set; }
 
         public virtual ObservableCollection<Ticket> Kunden_Tickets { get; set; }
