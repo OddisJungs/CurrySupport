@@ -152,7 +152,8 @@
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Adresse}"></TextBox>
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Telefonnummer}"></TextBox>
                     </StackPanel>
-                    <Button Grid.Row="1"  Grid.Column="0" Height="30"
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
                                 Margin="10"
@@ -161,7 +162,6 @@
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
                                 Width="140">Löschen</Button>
-                    <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -171,6 +171,8 @@
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
                                 Width="140">Hinzufügen</Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
