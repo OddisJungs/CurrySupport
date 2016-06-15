@@ -43,8 +43,8 @@
                                 <GridViewColumn Header="Priorität" Width="70" DisplayMemberBinding="{Binding Path=Priorität}"/>
                                 <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding Path=Status.Bezeichnung}"/>
                                 <GridViewColumn Header="Bearbeiter" Width="150" DisplayMemberBinding="{Binding Path=GetVollerKundenName}"/>
-                                    <GridViewColumn Header="Kunde" Width="150" DisplayMemberBinding="{Binding Path=GetVollerBearbeiterName}"/>
-                                    <GridViewColumn Header="Datum" Width="100" DisplayMemberBinding="{Binding Path=Erstellungsdatum}"/>
+                                <GridViewColumn Header="Kunde" Width="150" DisplayMemberBinding="{Binding Path=GetVollerBearbeiterName}"/>
+                                <GridViewColumn Header="Datum" Width="100" DisplayMemberBinding="{Binding Path=Erstellungsdatum}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -90,6 +90,73 @@
                                    x:Name="TextBlockTicket"/>
                     </StackPanel>
                 </TabItem.Header>
+                <!-- Ticket View -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Kunde:" Margin="0,5"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Bearbeiter:"  Margin="0,5"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Kategorie:"  Margin="0, 5"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="Unterkategorie:"  Margin="0,5"></TextBlock>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="Priorität:"  Margin="0,5"></TextBlock>
+                    <TextBlock Grid.Row="5" Grid.Column="1" Text="Status:"  Margin="0,5"></TextBlock>
+                    <ComboBox  Grid.Row="0" Grid.Column="2" Height="20"></ComboBox>
+                    <ComboBox  Grid.Row="1" Grid.Column="2" Height="20"></ComboBox>
+                    <ComboBox  Grid.Row="2" Grid.Column="2" Height="20"></ComboBox>
+                    <ComboBox  Grid.Row="3" Grid.Column="2" Height="20"></ComboBox>
+                    <TextBox   Grid.Row="4" Grid.Column="2" Height="20"></TextBox>
+                    <ComboBox  Grid.Row="5" Grid.Column="2" Height="20"></ComboBox>
+                    <TextBlock Grid.Row="6" Grid.Column="1" Text="Problembeschreibung:" Margin="0,5"></TextBlock>
+                    <TextBlock Grid.Row="6" Grid.Column="2" Text="Problemlösung:" Margin="0,5"></TextBlock>
+                    <TextBox Grid.Row="7" Grid.Column="1"></TextBox>
+                    <TextBox Grid.Row="7" Grid.Column="2"></TextBox>
+                    <ListView Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="8">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Person"></GridViewColumn>
+                                <GridViewColumn Header="Bearbeitet"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Right" Orientation="Horizontal">
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="140"
+                                Click="ButtonBearbeiten_OnClick">Übernehmen</Button>
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="140"
+                                Click="ButtonBearbeiten_OnClick">Abbrechen</Button>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Padding="0" 
                      Margin="5,0,5,0" 
@@ -183,15 +250,6 @@
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
                                 Width="140" VerticalAlignment="Bottom" Click="PersonenÜbernehmenButton_Click">Übernehmen</Button>
-                        <Button Height="30"
-                                FontSize="14"
-                                Padding="3"
-                                Margin="10"
-                                Background="Blue"
-                                Foreground="White"
-                                BorderThickness="1"
-                                BorderBrush="LightSkyBlue"
-                                Width="140" Click="PersonenAbbrechenButton_Click">Abbrechen</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
