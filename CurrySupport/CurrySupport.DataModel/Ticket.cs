@@ -40,12 +40,12 @@ namespace CurrySupport.DataModel
 
         public String GetVollerKundenName
         {
-            get { return Kunde.Vorname + Kunde.Name; }
+            get { return Kunde.Vorname + " " + Kunde.Name; }
         }
 
         public String GetVollerBearbeiterName
         {
-            get { return Bearbeiter.Vorname + Bearbeiter.Name; }
+            get { return Bearbeiter.Vorname + " " + Bearbeiter.Name; }
         }
     }
 }

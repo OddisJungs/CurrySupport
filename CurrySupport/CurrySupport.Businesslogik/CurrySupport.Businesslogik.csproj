@@ -56,14 +56,14 @@
     <Compile Include="TicketListeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CurrySupport.DataModel\CurrySupport.DataModel.csproj">
-      <Project>{0C394259-C70D-4369-913E-A2299577F5FA}</Project>
-      <Name>CurrySupport.DataModel</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CurrySupport.DataModel\CurrySupport.DataModel.csproj">
+      <Project>{0c394259-c70d-4369-913e-a2299577f5fa}</Project>
+      <Name>CurrySupport.DataModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
