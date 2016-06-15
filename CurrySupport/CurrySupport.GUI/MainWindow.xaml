@@ -41,9 +41,9 @@
                             <GridView>
                                 <GridViewColumn Header="TicketID" Width="100" DisplayMemberBinding="{Binding Path=Id}"/>
                                 <GridViewColumn Header="Priorität" Width="70" DisplayMemberBinding="{Binding Path=Priorität}"/>
-                                <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding Path=Status.Name}"/>
-                                <GridViewColumn Header="Bearbeiter" Width="150" DisplayMemberBinding="{Binding Path=Bearbeiter.Name} + {Binding Path=Bearbeiter.Vorname}"/>
-                                <GridViewColumn Header="Kunde" Width="150" DisplayMemberBinding="{Binding Path=Kunde.Name}"/>
+                                <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding Path=Status.Bezeichnung}"/>
+                                <GridViewColumn Header="Bearbeiter" Width="150" DisplayMemberBinding="{Binding Path=GetVollerKundenName}"/>
+                                <GridViewColumn Header="Kunde" Width="150" DisplayMemberBinding="{Binding Path=GetVollerBearbeiterName}"/>
                                 <GridViewColumn Header="Datum" Width="100" DisplayMemberBinding="{Binding Path=Erstellungsdatum}"/>
                             </GridView>
                         </ListView.View>

@@ -37,5 +37,15 @@ namespace CurrySupport.DataModel
 
         [Required]
         public virtual Status Status { get; set; }
+
+        public String GetVollerKundenName
+        {
+            get { return Kunde.Vorname + Kunde.Name; }
+        }
+
+        public String GetVollerBearbeiterName
+        {
+            get { return Bearbeiter.Vorname + Bearbeiter.Name; }
+        }
     }
 }

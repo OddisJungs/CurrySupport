@@ -12,13 +12,10 @@ namespace CurrySupport.Businesslogik
     {
         public TicketListeViewModel()
         {
-            dbContext = new CurrySupportContext();
+            var dbContext = new CurrySupportContext();
             Tickets = new ObservableCollection<Ticket>(dbContext.AlleTickets.ToList());
         }
 
-        private CurrySupportContext dbContext;
-        
         public ObservableCollection<Ticket> Tickets { get; set; }
-
     }
 }
