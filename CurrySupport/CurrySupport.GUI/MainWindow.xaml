@@ -43,8 +43,8 @@
                                 <GridViewColumn Header="Priorität" Width="70" DisplayMemberBinding="{Binding Path=Priorität}"/>
                                 <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding Path=Status.Bezeichnung}"/>
                                 <GridViewColumn Header="Bearbeiter" Width="150" DisplayMemberBinding="{Binding Path=GetVollerKundenName}"/>
-                                <GridViewColumn Header="Kunde" Width="150" DisplayMemberBinding="{Binding Path=GetVollerBearbeiterName}"/>
-                                <GridViewColumn Header="Datum" Width="100" DisplayMemberBinding="{Binding Path=Erstellungsdatum}"/>
+                                    <GridViewColumn Header="Kunde" Width="150" DisplayMemberBinding="{Binding Path=GetVollerBearbeiterName}"/>
+                                    <GridViewColumn Header="Datum" Width="100" DisplayMemberBinding="{Binding Path=Erstellungsdatum}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -71,7 +71,7 @@
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
                                 Width="140"
-                                Click="ButtonBearbeiten_OnClick">Bearbeiten</Button>                        
+                                Click="ButtonBearbeiten_OnClick">Bearbeiten</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -176,12 +176,12 @@
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
-                                Margin="10"
+                                Margin="10,0,10,10"
                                 Background="Blue"
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="140">Übernehmen</Button>
+                                Width="140" VerticalAlignment="Bottom" Click="PersonenÜbernehmenButton_Click">Übernehmen</Button>
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"

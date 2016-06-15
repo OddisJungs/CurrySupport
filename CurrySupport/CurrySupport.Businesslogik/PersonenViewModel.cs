@@ -55,6 +55,11 @@ namespace CurrySupport.Businesslogik
             ausgewaehltePerson = new Person();
         }
 
+        public void AusgewaehltePersonÄnderungÜbernehmen()
+        {
+           dbContext.SaveChanges();
+        }
+
         public void PersonAuswahlAufheben()
         {
             AusgewaehltePerson = new Person();
