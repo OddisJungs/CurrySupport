@@ -82,5 +82,15 @@ namespace CurrySupport.GUI
         {
 
         }
+
+        private void PersonenHinzufügenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((PersonenViewModel)DataContext).PersonHinzufügen();
+        }
+
+        private void PersonenLöschenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((PersonenViewModel)DataContext).AusgewaehltePersonLöschen();
+        }
     }
 }
