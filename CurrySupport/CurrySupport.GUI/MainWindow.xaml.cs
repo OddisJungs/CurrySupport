@@ -79,9 +79,11 @@ namespace CurrySupport.GUI
             }
         }
 
-        private void ButtonBearbeiten_OnClick(object sender, RoutedEventArgs e)
+        private void TicketListBearbeitenButtonBearbeiten_OnClick(object sender, RoutedEventArgs e)
         {
-
+            TabItemTicketlist.IsSelected = false;
+            TabItemTicket.IsSelected = true;
+            DataContext = new TicketViewModel();
         }
 
         private void ButtonLöschen_OnClick(object sender, RoutedEventArgs e)

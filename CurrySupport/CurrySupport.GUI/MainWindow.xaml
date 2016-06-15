@@ -71,7 +71,7 @@
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
                                 Width="140"
-                                Click="ButtonBearbeiten_OnClick">Bearbeiten</Button>
+                                Click="TicketListBearbeitenButtonBearbeiten_OnClick">Bearbeiten</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -126,7 +126,7 @@
                     <TextBlock Grid.Row="6" Grid.Column="2" Text="Problemlösung:" Margin="0,5"></TextBlock>
                     <TextBox Grid.Row="7" Grid.Column="1"></TextBox>
                     <TextBox Grid.Row="7" Grid.Column="2"></TextBox>
-                    <ListView Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="8">
+                    <ListView Margin="0, 10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="8">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Person"></GridViewColumn>
@@ -143,8 +143,8 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="140"
-                                Click="ButtonBearbeiten_OnClick">Übernehmen</Button>
+                                Width="auto"
+                                Click="TicketListBearbeitenButtonBearbeiten_OnClick">Übernehmen / Hinzufügen</Button>
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -154,7 +154,7 @@
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
                                 Width="140"
-                                Click="ButtonBearbeiten_OnClick">Abbrechen</Button>
+                                Click="TicketListBearbeitenButtonBearbeiten_OnClick">Abbrechen</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
