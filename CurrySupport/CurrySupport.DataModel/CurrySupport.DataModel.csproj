@@ -60,15 +60,9 @@
     <Compile Include="Migrations\201606150903332_Add-Required.Designer.cs">
       <DependentUpon>201606150903332_Add-Required.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Migrations\201606151427106_Test.cs" />
     <Compile Include="Migrations\201606151427106_Test.Designer.cs">
       <DependentUpon>201606151427106_Test.cs</DependentUpon>
-=======
-    <Compile Include="Migrations\201606151424097_takeoutrequired.cs" />
-    <Compile Include="Migrations\201606151424097_takeoutrequired.Designer.cs">
-      <DependentUpon>201606151424097_takeoutrequired.cs</DependentUpon>
->>>>>>> origin/master
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
@@ -89,13 +83,8 @@
     <EmbeddedResource Include="Migrations\201606150903332_Add-Required.resx">
       <DependentUpon>201606150903332_Add-Required.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\201606151427106_Test.resx">
       <DependentUpon>201606151427106_Test.cs</DependentUpon>
-=======
-    <EmbeddedResource Include="Migrations\201606151424097_takeoutrequired.resx">
-      <DependentUpon>201606151424097_takeoutrequired.cs</DependentUpon>
->>>>>>> origin/master
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
