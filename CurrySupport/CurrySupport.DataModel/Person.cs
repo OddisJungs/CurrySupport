@@ -12,7 +12,7 @@ namespace CurrySupport.DataModel
     {
         public Person()
         {
-            Tickets = new ObservableCollection<Ticket>();
+            Bearbeiter_Tickets = new ObservableCollection<Ticket>();
         }
 
         public int Id { get; set; }
@@ -35,6 +35,7 @@ namespace CurrySupport.DataModel
         [Required]
         public virtual Rolle Rolle { get; set; }
 
-        public virtual ObservableCollection<Ticket> Tickets { get; set; }
+        public virtual ObservableCollection<Ticket> Kunden_Tickets { get; set; }
+        public virtual ObservableCollection<Ticket> Bearbeiter_Tickets { get; set; }
     }
 }

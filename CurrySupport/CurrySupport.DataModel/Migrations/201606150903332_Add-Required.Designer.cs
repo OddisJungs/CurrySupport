@@ -7,13 +7,13 @@ namespace CurrySupport.DataModel.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class initial : IMigrationMetadata
+    public sealed partial class AddRequired : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddRequired));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606111037162_initial"; }
+            get { return "201606150903332_Add-Required"; }
         }
         
         string IMigrationMetadata.Source

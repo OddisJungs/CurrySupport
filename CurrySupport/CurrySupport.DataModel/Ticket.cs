@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +11,7 @@ namespace CurrySupport.DataModel
 {
     public class Ticket
     {
-        public Ticket()
-        {
-            // Damit nie null zurückgegeben wird
-            Personen = new ObservableCollection<Person>();
-        }
-
+        [Required]
         public int Id { get; set; }
 
         [Required]
@@ -28,13 +24,18 @@ namespace CurrySupport.DataModel
 
         public DateTime? Aenderungsdatum { get; set; }
 
-        public virtual ObservableCollection<Person> Personen { get; set; }
+        [Required]
+        public virtual Person Kunde{ get; set; }
+
+        [Required]
+        public virtual Person Bearbeiter{ get; set; }
 
         [Required]
         public virtual Kategorie Kategorie { get; set; }
 
         public virtual Unterkategorie Unterkategorie { get; set; }
 
+        [Required]
         public virtual Status Status { get; set; }
     }
 }

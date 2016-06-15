@@ -3,7 +3,7 @@ namespace CurrySupport.DataModel.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addseed : DbMigration
+    public partial class AddRequired : DbMigration
     {
         public override void Up()
         {
