@@ -116,12 +116,12 @@
                     <TextBlock Grid.Row="3" Grid.Column="1" Text="Unterkategorie:"  Margin="0,5"></TextBlock>
                     <TextBlock Grid.Row="4" Grid.Column="1" Text="Priorität:"  Margin="0,5"></TextBlock>
                     <TextBlock Grid.Row="5" Grid.Column="1" Text="Status:"  Margin="0,5"></TextBlock>
-                    <ComboBox  Grid.Row="0" Grid.Column="2" Height="20" ItemsSource="{Binding Path=PersonenListe}" DisplayMemberPath="GetVollerName"></ComboBox>
-                    <ComboBox  Grid.Row="1" Grid.Column="2" Height="20" ItemsSource="{Binding Path=PersonenListe}" DisplayMemberPath="GetVollerName"></ComboBox>
-                    <ComboBox  Grid.Row="2" Grid.Column="2" Height="20" ItemsSource="{Binding Path=Kategorien}" DisplayMemberPath="Bezeichnung"></ComboBox>
-                    <ComboBox  Grid.Row="3" Grid.Column="2" Height="20" ItemsSource="{Binding Path=Unterkategorien}" DisplayMemberPath="Bezeichnung"></ComboBox>
+                    <ComboBox  Grid.Row="0" Grid.Column="2" Height="20" ItemsSource="{Binding Path=KundenListe}" SelectedValue="{Binding Path=Ticket.Kunde}" DisplayMemberPath="GetVollerName"></ComboBox>
+                    <ComboBox  Grid.Row="1" Grid.Column="2" Height="20" ItemsSource="{Binding Path=BearbeiterListe}" SelectedValue="{Binding Path=Ticket.Bearbeiter}" DisplayMemberPath="GetVollerName"></ComboBox>
+                    <ComboBox  Grid.Row="2" Grid.Column="2" Height="20" ItemsSource="{Binding Path=Kategorien}" SelectedValue="{Binding Path=Ticket.Kategorie}" DisplayMemberPath="Bezeichnung"></ComboBox>
+                    <ComboBox  Grid.Row="3" Grid.Column="2" Height="20" ItemsSource="{Binding Path=Unterkategorien}" SelectedValue="{Binding Path=Ticket.Unterkategorie}" DisplayMemberPath="Bezeichnung"></ComboBox>
                     <TextBox   Grid.Row="4" Grid.Column="2" Height="20" Text="{Binding Path=Ticket.Priorität}"></TextBox>
-                    <ComboBox  Grid.Row="5" Grid.Column="2" Height="20" ItemsSource="{Binding Path=Statusse}" DisplayMemberPath="Bezeichnung" ></ComboBox>
+                    <ComboBox  Grid.Row="5" Grid.Column="2" Height="20" ItemsSource="{Binding Path=Statusse}" SelectedValue="{Binding Path=Ticket.Status}" DisplayMemberPath="Bezeichnung" ></ComboBox>
                     <TextBlock Grid.Row="6" Grid.Column="1" Text="Problembeschreibung:" Margin="0,5"></TextBlock>
                     <TextBlock Grid.Row="6" Grid.Column="2" Text="Problemlösung:" Margin="0,5"></TextBlock>
                     <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=Ticket.Beschreibung}"></TextBox>
@@ -143,8 +143,7 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="auto"
-                                Click="TicketListBearbeitenButtonBearbeiten_OnClick">Übernehmen / Hinzufügen</Button>
+                                Width="auto" Click="TicketSaveButton_Click">Übernehmen / Hinzufügen</Button>
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"

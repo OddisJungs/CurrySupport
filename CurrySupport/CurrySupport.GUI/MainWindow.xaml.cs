@@ -121,5 +121,16 @@ namespace CurrySupport.GUI
         {
             ((PersonenViewModel)DataContext).AusgewaehltePersonÄnderungÜbernehmen();
         }
+
+        private void TicketSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool successfull = ((TicketViewModel)DataContext).SaveTicket();
+            if (successfull == true)
+            {
+                TabItemTicketlist.IsSelected = true;
+                TabItemTicket.IsSelected = false;
+                DataContext = new TicketListeViewModel();
+            }
+        }
     }
 }

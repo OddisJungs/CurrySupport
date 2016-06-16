@@ -17,7 +17,6 @@ namespace CurrySupport.DataModel
         [Required]
         public string Beschreibung { get; set; }
 
-        [Required]
         public string Lösung { get; set; }
 
         [Required]

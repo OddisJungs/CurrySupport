@@ -25,18 +25,29 @@ namespace CurrySupport.Businesslogik
         }
         private void Construct()
         {
-            PersonenListe = new ObservableCollection<Person>(dbContext.AllePersonen.ToList());
+            BearbeiterListe = new ObservableCollection<Person>(dbContext.AllePersonen.Where(x => x.Rolle.Bezeichnung == "Bearbeiter").ToList());
+            KundenListe = new ObservableCollection<Person>(dbContext.AllePersonen.Where(x => x.Rolle.Bezeichnung == "Kunde").ToList());
             Kategorien = new ObservableCollection<Kategorie>(dbContext.AlleKategorien.ToList());
             Unterkategorien = new ObservableCollection<Unterkategorie>(dbContext.AlleUnterkategorien.ToList());
             Statusse = new ObservableCollection<Status>(dbContext.AlleStatusse.ToList());
         }
 
+        public bool SaveTicket()
+        {
+            if (Ticket.Id == 0)
+            {
+                dbContext.AlleTickets.Add(Ticket);
+            }
+            dbContext.SaveChanges();
+            return true;
+        }
+
         public Ticket Ticket { get; set; }
         public ObservableCollection<Kategorie> Kategorien { get; set; }
         public ObservableCollection<Unterkategorie> Unterkategorien { get; set; }
-        public ObservableCollection<Person> PersonenListe { get; set; }
+        public ObservableCollection<Person> BearbeiterListe { get; set; }
+        public ObservableCollection<Person> KundenListe { get; set; }
         public ObservableCollection<Status> Statusse { get; set; }
-
 
         private CurrySupportContext dbContext;
     }
