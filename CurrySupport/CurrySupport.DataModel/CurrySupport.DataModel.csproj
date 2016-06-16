@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201606151446565_Test2.Designer.cs">
       <DependentUpon>201606151446565_Test2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606162110101_Add_Missing_Field.cs" />
+    <Compile Include="Migrations\201606162110101_Add_Missing_Field.Designer.cs">
+      <DependentUpon>201606162110101_Add_Missing_Field.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606151446565_Test2.resx">
       <DependentUpon>201606151446565_Test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606162110101_Add_Missing_Field.resx">
+      <DependentUpon>201606162110101_Add_Missing_Field.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -18,6 +18,9 @@ namespace CurrySupport.DataModel
         public string Beschreibung { get; set; }
 
         [Required]
+        public string Lösung { get; set; }
+
+        [Required]
         public int Priorität { get; set; }
 
         public DateTime? Erstellungsdatum { get; set; }

@@ -94,6 +94,7 @@ namespace CurrySupport.DataModel.Migrations
                     Id = 1,
                     Beschreibung = "Dieses Programm fertig schreiben",
                     Priorität = 100,
+                    Lösung = "Schreiben, Schreiben, Schreiben ...",
                     Aenderungsdatum = DateTime.Now,
                     Erstellungsdatum = DateTime.Now,
                     Kategorie = context.AlleKategorien.FirstOrDefault(x => x.Id == 1),
