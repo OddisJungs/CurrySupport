@@ -44,6 +44,10 @@ namespace CurrySupport.GUI
             if (TabItemTicket.IsSelected)
             {
                 TextBlockTicket.Background = Brushes.Blue;
+                if (DataContext.GetType() != typeof(TicketViewModel))
+                {
+                    DataContext = new TicketViewModel();
+                }
             }
             else
             {
@@ -81,12 +85,12 @@ namespace CurrySupport.GUI
 
         private void TicketListBearbeitenButtonBearbeiten_OnClick(object sender, RoutedEventArgs e)
         {
+            dynamic item = TicketList.SelectedItem as dynamic;
+            int ticketId = item.Id;
+
             TabItemTicketlist.IsSelected = false;
             TabItemTicket.IsSelected = true;
 
-            dynamic item = TicketList.SelectedItem as dynamic;
-            int ticketId = item.Id;
-            
             DataContext = new TicketViewModel(ticketId);
         }
 
