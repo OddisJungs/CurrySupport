@@ -116,7 +116,7 @@
                     <TextBlock Grid.Row="3" Grid.Column="1" Text="Unterkategorie:"  Margin="0,5"></TextBlock>
                     <TextBlock Grid.Row="4" Grid.Column="1" Text="Priorität:"  Margin="0,5"></TextBlock>
                     <TextBlock Grid.Row="5" Grid.Column="1" Text="Status:"  Margin="0,5"></TextBlock>
-                    <ComboBox  Grid.Row="0" Grid.Column="2" Height="20"></ComboBox>
+                    <ComboBox  Grid.Row="0" Grid.Column="2" Height="20" ItemsSource="{Binding Path=PersonenListe}"></ComboBox>
                     <ComboBox  Grid.Row="1" Grid.Column="2" Height="20"></ComboBox>
                     <ComboBox  Grid.Row="2" Grid.Column="2" Height="20"></ComboBox>
                     <ComboBox  Grid.Row="3" Grid.Column="2" Height="20"></ComboBox>

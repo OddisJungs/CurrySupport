@@ -12,17 +12,31 @@ namespace CurrySupport.Businesslogik
     {
         public TicketViewModel()
         {
-            var dbContext = new CurrySupportContext();
+            dbContext = new CurrySupportContext();
             Ticket = new Ticket();
+            Construct();
         }
 
         public TicketViewModel(int ticketId)
         {
-            var dbContext = new CurrySupportContext();
+            dbContext = new CurrySupportContext();
             Ticket = dbContext.AlleTickets.Find(ticketId);
+            Construct();
+        }
+        private void Construct()
+        {
+            personenListe = new ObservableCollection<Person>(dbContext.AllePersonen.ToList());
         }
 
-        private CurrySupportContext dbContext;
         public Ticket Ticket { get; set; }
+
+        public ObservableCollection<Person> PersonenListe
+        {
+            get { return personenListe; }
+            set { personenListe = value; }
+        }
+
+        private ObservableCollection<Person> personenListe;
+        private CurrySupportContext dbContext;
     }
 }
