@@ -12,21 +12,17 @@ namespace CurrySupport.Businesslogik
     {
         public TicketViewModel()
         {
+            var dbContext = new CurrySupportContext();
             Ticket = new Ticket();
         }
 
-        public TicketViewModel(object zuBearbeitendesTicket)
+        public TicketViewModel(int ticketId)
         {
-            if (zuBearbeitendesTicket.GetType() == typeof(Ticket))
-            {
-                Ticket = (Ticket)zuBearbeitendesTicket;
-            }
-            else
-            {
-                throw new FormatException();
-            }
+            var dbContext = new CurrySupportContext();
+            Ticket = dbContext.AlleTickets.Find(ticketId);
         }
 
+        private CurrySupportContext dbContext;
         public Ticket Ticket { get; set; }
     }
 }

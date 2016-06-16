@@ -83,7 +83,11 @@ namespace CurrySupport.GUI
         {
             TabItemTicketlist.IsSelected = false;
             TabItemTicket.IsSelected = true;
-            DataContext = new TicketViewModel();
+
+            dynamic item = TicketList.SelectedItem as dynamic;
+            int ticketId = item.Id;
+            
+            DataContext = new TicketViewModel(ticketId);
         }
 
         private void ButtonLöschen_OnClick(object sender, RoutedEventArgs e)
