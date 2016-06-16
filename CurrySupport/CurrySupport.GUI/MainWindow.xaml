@@ -218,7 +218,7 @@
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Vorname}"></TextBox>
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Adresse}"></TextBox>
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Telefonnummer}"></TextBox>
-                        <ComboBox></ComboBox>
+                        <ComboBox Margin="10.5" DisplayMemberPath="Bezeichnung" ItemsSource="{Binding Path=AlleRollen}" SelectedValue="{Binding Path=AusgewaehltePerson.Rolle}"></ComboBox>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button Height="30"
