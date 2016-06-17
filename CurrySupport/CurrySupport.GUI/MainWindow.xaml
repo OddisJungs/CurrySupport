@@ -207,10 +207,11 @@
                         </ListView.View>
                     </ListView>
                     <StackPanel Grid.Column="1">
-                        <TextBlock Margin="10,5" Text="Name"></TextBlock>
-                        <TextBlock Margin="10,5" Text="Vorname"></TextBlock>
-                        <TextBlock Margin="10,5" Text="Adresse"></TextBlock>
-                        <TextBlock Margin="10,5" Text="Telefonnummer"></TextBlock>
+                        <TextBlock Margin="10,5" Padding="2" Text="Name"></TextBlock>
+                        <TextBlock Margin="10,5" Padding="2" Text="Vorname"></TextBlock>
+                        <TextBlock Margin="10,5" Padding="2" Text="Adresse"></TextBlock>
+                        <TextBlock Margin="10,5" Padding="2" Text="Telefonnummer"></TextBlock>
+                        <TextBlock Margin="10,5" Padding="2" Text="Rolle der Person"></TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Column="2">
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Name}"></TextBox>
@@ -266,6 +267,33 @@
                                    x:Name="TextBlockKategorien"/>
                     </StackPanel>
                 </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ListView Name="Kategorien" SelectedItem="{Binding AusgewaehlteKategorie}" ItemsSource="{Binding AlleKategorien}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Kategorie" Width="200" DisplayMemberBinding="{Binding Path=Bezeichnung}" ></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ListView Grid.Column="1" Name="UnterKategorien" SelectedItem="{Binding AusgewaehlteUnterkategorie}" ItemsSource="{Binding AusgewaehlteKategorie.Unterkategorien}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Unterkategorie" Width="200" DisplayMemberBinding="{Binding Path=Bezeichnung}" ></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
