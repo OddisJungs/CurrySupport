@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +49,19 @@ namespace CurrySupport.DataModel
         public String GetVollerBearbeiterName
         {
             get { return Bearbeiter.Vorname + " " + Bearbeiter.Name; }
+        }
+
+        public string GetDatumFormated
+        {
+            get
+            {
+                DateTime datum = new DateTime();
+                if (Erstellungsdatum != null)
+                {
+                    datum = (DateTime)Erstellungsdatum;
+                }
+                return datum.ToString("d MMMM yyyy",CultureInfo.CurrentCulture);
+            }
         }
     }
 }
