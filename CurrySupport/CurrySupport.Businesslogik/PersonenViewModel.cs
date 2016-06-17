@@ -19,6 +19,9 @@ namespace CurrySupport.Businesslogik
             AlleRollen = new ObservableCollection<Rolle>(dbContext.AlleRollen);
         }
         public ObservableCollection<Person> Personen { get; set; }
+
+        public ObservableCollection<Rolle> AlleRollen { get; set; }
+
         public Person AusgewaehltePerson
         {
             get
@@ -68,8 +71,5 @@ namespace CurrySupport.Businesslogik
 
         private Person ausgewaehltePerson;
         private CurrySupportContext dbContext;
-
-        public ObservableCollection<Rolle> AlleRollen { get; set; }
-
     }
 }

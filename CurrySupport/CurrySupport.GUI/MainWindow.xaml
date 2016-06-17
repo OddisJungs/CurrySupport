@@ -61,7 +61,8 @@
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
                                 Width="140"
-                                Click="ButtonLöschen_OnClick">Löschen</Button>
+                                Click="TicketListButtonLöschen_OnClick"
+                                Name="ButtonLöschen">Löschen</Button>
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
