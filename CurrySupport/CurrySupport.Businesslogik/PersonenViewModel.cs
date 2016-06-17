@@ -16,11 +16,11 @@ namespace CurrySupport.Businesslogik
             dbContext = new CurrySupportContext();
             Personen = new ObservableCollection<Person>(dbContext.AllePersonen);
             ausgewaehltePerson = new Person();
-            AlleRollen = new ObservableCollection<Rolle>(dbContext.AlleRollen);
+            Rollen = new ObservableCollection<Rolle>(dbContext.AlleRollen);
         }
         public ObservableCollection<Person> Personen { get; set; }
 
-        public ObservableCollection<Rolle> AlleRollen { get; set; }
+        public ObservableCollection<Rolle> Rollen { get; set; }
 
         public Person AusgewaehltePerson
         {

@@ -12,16 +12,17 @@ namespace CurrySupport.Businesslogik
     {
         private Kategorie ausgewaehlteKategorie;
         private Unterkategorie ausgewaehlteUnterkategorie;
+        private CurrySupportContext dbContext;
 
         public KategorieViewModel()
         {
-            var dbContext = new CurrySupportContext();
-            AlleKategorien = new ObservableCollection<Kategorie>(dbContext.AlleKategorien);
+            dbContext = new CurrySupportContext();
+            Kategorien = new ObservableCollection<Kategorie>(dbContext.AlleKategorien);
             ausgewaehlteKategorie = new Kategorie();
             ausgewaehlteUnterkategorie = new Unterkategorie();
         }
 
-        public ObservableCollection<Kategorie> AlleKategorien { get; set; }
+        public ObservableCollection<Kategorie> Kategorien { get; set; }
 
         public Kategorie AusgewaehlteKategorie
         {
@@ -47,6 +48,52 @@ namespace CurrySupport.Businesslogik
                 ausgewaehlteUnterkategorie = value;
                 RaisePropertyChanged("AusgewaehlteUnterkategorie");
             }
+        }
+
+        public void KategorieHinzufuegen()
+        {
+            Kategorie neueKategorie = new Kategorie();
+            neueKategorie.Bezeichnung = "Neue Kategorie";
+            neueKategorie.Aktiv = true;
+            dbContext.AlleKategorien.Add(neueKategorie);
+            Kategorien.Add(neueKategorie);
+            dbContext.SaveChanges();
+        }
+
+        public void UnterkategorieHinzufuegen()
+        {
+            if (ausgewaehlteKategorie != null) 
+            {
+                Unterkategorie neueUnterkategorie = new Unterkategorie();
+                neueUnterkategorie.Bezeichnung = "Neue Unterkategorie";
+                neueUnterkategorie.Kategorie = ausgewaehlteKategorie;
+                neueUnterkategorie.Aktiv = true;
+                ausgewaehlteKategorie.Unterkategorien.Add(neueUnterkategorie);
+                dbContext.AlleUnterkategorien.Add(neueUnterkategorie);
+                dbContext.SaveChanges();
+            }
+        }
+
+        public void AusgewaehlteKategorieLoeschen()
+        {
+            if (dbContext.AlleKategorien.Find(ausgewaehlteKategorie.Id) != null)
+            {
+                dbContext.AlleKategorien.Remove(ausgewaehlteKategorie);
+                Kategorien.Remove(ausgewaehlteKategorie);
+                dbContext.SaveChanges();
+            }
+            ausgewaehlteKategorie = new Kategorie();
+        }
+
+        public void AusgewaehlteUnterkategorieLoeschen()
+        {
+            if (dbContext.AlleUnterkategorien.Find(ausgewaehlteUnterkategorie.Id) != null)
+            {
+                dbContext.AlleUnterkategorien.Remove(ausgewaehlteUnterkategorie);
+                ausgewaehlteKategorie.Unterkategorien.Remove(ausgewaehlteUnterkategorie);               
+                dbContext.SaveChanges();
+            }
+            ausgewaehlteUnterkategorie = new Unterkategorie();
         }
 
     }

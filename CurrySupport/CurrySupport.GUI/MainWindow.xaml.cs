@@ -75,8 +75,11 @@ namespace CurrySupport.GUI
             }
             if (TabItemKategorien.IsSelected)
             {
+                if (DataContext.GetType() != typeof(KategorieViewModel))
+                {
+                    DataContext = new KategorieViewModel();
+                }
                 TextBlockKategorien.Background = Brushes.Blue;
-                DataContext = new KategorieViewModel();
             }
             else
             {
@@ -138,6 +141,26 @@ namespace CurrySupport.GUI
                 TabItemTicket.IsSelected = false;
                 DataContext = new TicketListeViewModel();
             }
+        }
+
+        private void KategorieLoeschenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((KategorieViewModel)DataContext).AusgewaehlteKategorieLoeschen();
+        }
+
+        private void KategorieHinzufuegenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((KategorieViewModel)DataContext).KategorieHinzufuegen();
+        }
+
+        private void UnterkategorieHinzufuegenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((KategorieViewModel)DataContext).UnterkategorieHinzufuegen();
+        }
+
+        private void UnterkategorieLoeschenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((KategorieViewModel)DataContext).AusgewaehlteUnterkategorieLoeschen();
         }
     }
 }
