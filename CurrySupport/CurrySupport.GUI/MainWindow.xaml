@@ -354,14 +354,14 @@
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
-                                <GridViewColumn Header="Kategorie" Width="Auto" DisplayMemberBinding="{Binding Path=Bezeichnung}" ></GridViewColumn>
+                                <GridViewColumn Header="Kategorie" Width="Auto" DisplayMemberBinding="{Binding Path=Bezeichnung}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
                     <ListView Grid.Column="1" Name="UnterKategorien" SelectedItem="{Binding AusgewaehlteUnterkategorie}" ItemsSource="{Binding AusgewaehlteKategorie.Unterkategorien}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Unterkategorie" Width="200" DisplayMemberBinding="{Binding Path=Bezeichnung}" ></GridViewColumn>
+                                <GridViewColumn Header="Unterkategorie" Width="200" DisplayMemberBinding="{Binding Path=Bezeichnung}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
