@@ -14,6 +14,7 @@ namespace CurrySupport.Businesslogik
         {
             dbContext = new CurrySupportContext();
             Ticket = new Ticket();
+            Ticket.Erstellungsdatum = DateTime.Now;
             Construct();
         }
 
@@ -34,6 +35,7 @@ namespace CurrySupport.Businesslogik
 
         public bool SaveTicket()
         {
+            Ticket.Aenderungsdatum = DateTime.Now;
             if (Ticket.Id == 0)
             {
                 dbContext.AlleTickets.Add(Ticket);
