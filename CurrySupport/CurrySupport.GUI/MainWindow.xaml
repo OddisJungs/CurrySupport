@@ -86,8 +86,8 @@
                                 <GridViewColumn Header="TicketID" Width="auto" DisplayMemberBinding="{Binding Path=Id}"/>
                                 <GridViewColumn Header="Priorität" Width="auto" DisplayMemberBinding="{Binding Path=Priorität}"/>
                                 <GridViewColumn Header="Status" Width="auto" DisplayMemberBinding="{Binding Path=Status.Bezeichnung}"/>
-                                <GridViewColumn Header="Bearbeiter" Width="auto" DisplayMemberBinding="{Binding Path=GetVollerKundenName}"/>
-                                <GridViewColumn Header="Kunde" Width="auto" DisplayMemberBinding="{Binding Path=GetVollerBearbeiterName}"/>
+                                <GridViewColumn Header="Bearbeiter" Width="auto" DisplayMemberBinding="{Binding Path=AktuellerBearbeiterName}"/>
+                                <GridViewColumn Header="Kunde" Width="auto" DisplayMemberBinding="{Binding Path=Kunde.VollerName}"/>
                                 <GridViewColumn Header="Datum" Width="auto" DisplayMemberBinding="{Binding Path=GetDatumFormated}"/>
                             </GridView>
                         </ListView.View>

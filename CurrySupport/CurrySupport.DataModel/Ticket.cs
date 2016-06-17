@@ -41,15 +41,7 @@ namespace CurrySupport.DataModel
         [Required]
         public virtual Status Status { get; set; }
 
-        public String GetVollerKundenName
-        {
-            get { return Kunde.Vorname + " " + Kunde.Name; }
-        }
-
-        public String GetVollerBearbeiterName
-        {
-            get { return BearbeiterHistory.OrderBy(x => x.Zuweisungsdatum).First().Person.Vorname + " " + BearbeiterHistory.OrderBy(x => x.Zuweisungsdatum).First().Person.Name; }
-        }
+        public string AktuellerBearbeiterName { get { return BearbeiterHistory.OrderBy(x => x.Zuweisungsdatum).First().Person.VollerName; } }
 
         public string GetDatumFormated
         {
