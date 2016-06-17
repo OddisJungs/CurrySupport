@@ -354,7 +354,7 @@
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
-                                <GridViewColumn Header="Kategorie" Width="Auto" DisplayMemberBinding="{Binding Path=Bezeichnung}" ></GridViewColumn>
+                                <GridViewColumn Header="Kategorie" Width="Auto" DisplayMemberBinding="{Binding Path=Bezeichnung}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
