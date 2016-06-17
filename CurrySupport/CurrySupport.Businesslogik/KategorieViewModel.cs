@@ -16,12 +16,12 @@ namespace CurrySupport.Businesslogik
         public KategorieViewModel()
         {
             var dbContext = new CurrySupportContext();
-            AlleKategorien = new ObservableCollection<Kategorie>(dbContext.AlleKategorien);
+            Kategorien = new ObservableCollection<Kategorie>(dbContext.AlleKategorien);
             ausgewaehlteKategorie = new Kategorie();
             ausgewaehlteUnterkategorie = new Unterkategorie();
         }
 
-        public ObservableCollection<Kategorie> AlleKategorien { get; set; }
+        public ObservableCollection<Kategorie> Kategorien { get; set; }
 
         public Kategorie AusgewaehlteKategorie
         {

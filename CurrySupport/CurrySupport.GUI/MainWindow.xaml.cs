@@ -75,8 +75,11 @@ namespace CurrySupport.GUI
             }
             if (TabItemKategorien.IsSelected)
             {
+                if (DataContext.GetType() != typeof(KategorieViewModel))
+                {
+                    DataContext = new KategorieViewModel();
+                }
                 TextBlockKategorien.Background = Brushes.Blue;
-                DataContext = new KategorieViewModel();
             }
             else
             {

@@ -263,7 +263,7 @@
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Vorname}"></TextBox>
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Adresse}"></TextBox>
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Telefonnummer}"></TextBox>
-                        <ComboBox Margin="10.5" DisplayMemberPath="Bezeichnung" ItemsSource="{Binding Path=AlleRollen}" SelectedValue="{Binding Path=AusgewaehltePerson.Rolle}"></ComboBox>
+                        <ComboBox Margin="10.5" DisplayMemberPath="Bezeichnung" ItemsSource="{Binding Path=Rollen}" SelectedValue="{Binding Path=AusgewaehltePerson.Rolle}"></ComboBox>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button Height="30"
@@ -324,7 +324,7 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <ListView Name="Kategorien" SelectedItem="{Binding AusgewaehlteKategorie}" ItemsSource="{Binding AlleKategorien}">
+                    <ListView Name="Kategorien" SelectedItem="{Binding AusgewaehlteKategorie}" ItemsSource="{Binding Kategorien}">
                         <ListView.Background>
                             <LinearGradientBrush EndPoint="0.939,0.919" StartPoint="0.061,0.081">
                                 <GradientStop Color="GhostWhite" Offset="0"/>
