@@ -142,5 +142,25 @@ namespace CurrySupport.GUI
                 DataContext = new TicketListeViewModel();
             }
         }
+
+        private void KategorieLoeschenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((KategorieViewModel)DataContext).AusgewaehlteKategorieLoeschen();
+        }
+
+        private void KategorieHinzufuegenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((KategorieViewModel)DataContext).KategorieHinzufuegen();
+        }
+
+        private void UnterkategorieHinzufuegenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((KategorieViewModel)DataContext).UnterkategorieHinzufuegen();
+        }
+
+        private void UnterkategorieLoeschenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((KategorieViewModel)DataContext).AusgewaehlteUnterkategorieLoeschen();
+        }
     }
 }
