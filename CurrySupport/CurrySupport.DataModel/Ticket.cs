@@ -31,7 +31,7 @@ namespace CurrySupport.DataModel
         public virtual Person Kunde{ get; set; }
 
         [Required]
-        public virtual Person Bearbeiter{ get; set; }
+        public virtual ObservableCollection<TicketBearbeiterHistory> BearbeiterHistory{ get; set; }
 
         [Required]
         public virtual Kategorie Kategorie { get; set; }
@@ -48,7 +48,7 @@ namespace CurrySupport.DataModel
 
         public String GetVollerBearbeiterName
         {
-            get { return Bearbeiter.Vorname + " " + Bearbeiter.Name; }
+            get { return BearbeiterHistory.OrderBy(x => x.Zuweisungsdatum).First().Person.Vorname + " " + BearbeiterHistory.OrderBy(x => x.Zuweisungsdatum).First().Person.Name; }
         }
 
         public string GetDatumFormated

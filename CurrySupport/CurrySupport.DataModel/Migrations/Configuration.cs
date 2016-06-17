@@ -87,6 +87,17 @@ namespace CurrySupport.DataModel.Migrations
                     Aktiv = true,
                     Rolle = context.AlleRollen.FirstOrDefault(x => x.Id == 2)
                 });
+
+            context.SaveChanges();
+
+            context.AlleTicketBearbeiterHistoryEinträge.AddOrUpdate(x => x.Id,
+                new TicketBearbeiterHistory()
+                {
+                    Id = 1,
+                    Person = context.AllePersonen.First(),
+                    Zuweisungsdatum = DateTime.Now
+                });
+     
             context.SaveChanges();
             context.AlleTickets.AddOrUpdate(x => x.Id,
                 new Ticket()
@@ -100,7 +111,7 @@ namespace CurrySupport.DataModel.Migrations
                     Kategorie = context.AlleKategorien.FirstOrDefault(x => x.Id == 1),
                     Status = context.AlleStatusse.FirstOrDefault(x => x.Id == 1),
                     Unterkategorie = context.AlleUnterkategorien.FirstOrDefault(x => x.Id == 1),
-                    Bearbeiter = context.AllePersonen.FirstOrDefault(x => x.Id == 1),
+                    BearbeiterHistory = new ObservableCollection<TicketBearbeiterHistory>(context.AlleTicketBearbeiterHistoryEinträge.ToList()),
                     Kunde = context.AllePersonen.FirstOrDefault(x => x.Id == 2)
                 });
             context.SaveChanges();

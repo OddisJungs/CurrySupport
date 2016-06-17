@@ -76,12 +76,17 @@
     <Compile Include="Migrations\201606162141531_lösung_isnt_required_anymore.Designer.cs">
       <DependentUpon>201606162141531_lösung_isnt_required_anymore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606171010314_add-history-of-editors.cs" />
+    <Compile Include="Migrations\201606171010314_add-history-of-editors.Designer.cs">
+      <DependentUpon>201606171010314_add-history-of-editors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rolle.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="Ticket.cs" />
+    <Compile Include="TicketBearbeiterHistory.cs" />
     <Compile Include="Unterkategorie.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606162141531_lösung_isnt_required_anymore.resx">
       <DependentUpon>201606162141531_lösung_isnt_required_anymore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606171010314_add-history-of-editors.resx">
+      <DependentUpon>201606171010314_add-history-of-editors.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

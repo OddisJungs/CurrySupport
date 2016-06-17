@@ -17,14 +17,10 @@ namespace CurrySupport.DataModel
         public DbSet<Status> AlleStatusse { get; set; }
         public DbSet<Ticket> AlleTickets { get; set; }
         public DbSet<Unterkategorie> AlleUnterkategorien { get; set; }
+        public DbSet<TicketBearbeiterHistory> AlleTicketBearbeiterHistoryEinträge { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Ticket>()
-                        .HasRequired(m => m.Bearbeiter)
-                        .WithMany(t => t.Bearbeiter_Tickets)
-                        .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Ticket>()
                         .HasRequired(m => m.Kunde)
                         .WithMany(t => t.Kunden_Tickets)
