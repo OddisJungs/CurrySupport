@@ -98,9 +98,15 @@ namespace CurrySupport.GUI
             }
         }
 
-        private void ButtonLöschen_OnClick(object sender, RoutedEventArgs e)
+        private void TicketListButtonLöschen_OnClick(object sender, RoutedEventArgs e)
         {
+            if (TicketList.SelectedItem != null)
+            {
+                dynamic item = TicketList.SelectedItem as dynamic;
+                int ticketId = item.Id;
 
+                ((TicketListeViewModel) DataContext).AusgewähltesTicketLöschen(ticketId);
+            }
         }
 
         private void PersonenHinzufügenButton_Click(object sender, RoutedEventArgs e)
