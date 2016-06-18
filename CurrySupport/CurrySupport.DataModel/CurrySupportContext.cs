@@ -23,7 +23,7 @@ namespace CurrySupport.DataModel
         {
             modelBuilder.Entity<Ticket>()
                         .HasRequired(m => m.Kunde)
-                        .WithMany(t => t.Kunden_Tickets)
+                        .WithMany(t => t.KundenTickets)
                         .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Ticket>()

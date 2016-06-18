@@ -52,41 +52,9 @@
   <ItemGroup>
     <Compile Include="CurrySupportContext.cs" />
     <Compile Include="Kategorie.cs" />
-    <Compile Include="Migrations\201606150859556_Init.cs" />
-    <Compile Include="Migrations\201606150859556_Init.Designer.cs">
-      <DependentUpon>201606150859556_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606150903332_Add-Required.cs" />
-    <Compile Include="Migrations\201606150903332_Add-Required.Designer.cs">
-      <DependentUpon>201606150903332_Add-Required.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606151427106_Test.cs" />
-    <Compile Include="Migrations\201606151427106_Test.Designer.cs">
-      <DependentUpon>201606151427106_Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606151446565_Test2.cs" />
-    <Compile Include="Migrations\201606151446565_Test2.Designer.cs">
-      <DependentUpon>201606151446565_Test2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606162110101_Add_Missing_Field.cs" />
-    <Compile Include="Migrations\201606162110101_Add_Missing_Field.Designer.cs">
-      <DependentUpon>201606162110101_Add_Missing_Field.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606162141531_lösung_isnt_required_anymore.cs" />
-    <Compile Include="Migrations\201606162141531_lösung_isnt_required_anymore.Designer.cs">
-      <DependentUpon>201606162141531_lösung_isnt_required_anymore.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606171010314_add-history-of-editors.cs" />
-    <Compile Include="Migrations\201606171010314_add-history-of-editors.Designer.cs">
-      <DependentUpon>201606171010314_add-history-of-editors.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606182025378_AddSeedData.cs" />
-    <Compile Include="Migrations\201606182025378_AddSeedData.Designer.cs">
-      <DependentUpon>201606182025378_AddSeedData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606182133227_SeedData.cs" />
-    <Compile Include="Migrations\201606182133227_SeedData.Designer.cs">
-      <DependentUpon>201606182133227_SeedData.cs</DependentUpon>
+    <Compile Include="Migrations\201606182224120_init.cs" />
+    <Compile Include="Migrations\201606182224120_init.Designer.cs">
+      <DependentUpon>201606182224120_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
@@ -102,32 +70,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606150859556_Init.resx">
-      <DependentUpon>201606150859556_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606150903332_Add-Required.resx">
-      <DependentUpon>201606150903332_Add-Required.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606151427106_Test.resx">
-      <DependentUpon>201606151427106_Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606151446565_Test2.resx">
-      <DependentUpon>201606151446565_Test2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606162110101_Add_Missing_Field.resx">
-      <DependentUpon>201606162110101_Add_Missing_Field.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606162141531_lösung_isnt_required_anymore.resx">
-      <DependentUpon>201606162141531_lösung_isnt_required_anymore.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606171010314_add-history-of-editors.resx">
-      <DependentUpon>201606171010314_add-history-of-editors.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606182025378_AddSeedData.resx">
-      <DependentUpon>201606182025378_AddSeedData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606182133227_SeedData.resx">
-      <DependentUpon>201606182133227_SeedData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606182224120_init.resx">
+      <DependentUpon>201606182224120_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
