@@ -55,6 +55,8 @@
                     x:Name="TabControl1"
                     BorderBrush="Blue"
                     BorderThickness="1, 5, 1, 1">
+            
+            <!-- TicketListe View -->
             <TabItem Padding="0" 
                      Margin="0,0,5,0" 
                      x:Name="TabItemTicketlist"
@@ -62,7 +64,7 @@
                      Width="200"
                      FontSize="18"
                      Foreground="White">
-                <Grid>
+                <Grid Margin="5,5,5,0">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -149,6 +151,8 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            
+            <!-- Ticket View -->
             <TabItem Padding="0" 
                      Margin="5,0,5,0" 
                      x:Name="TabItemTicket"
@@ -156,7 +160,6 @@
                      FontSize="18"
                      Foreground="White"
                      Width="200">
-                <!-- Ticket View -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -334,14 +337,161 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            
+            <!-- KundenÜbersicht View -->
             <TabItem Padding="0" 
                      Margin="5,0,5,0" 
                      Header="Kunden Übersicht"
                      FontSize="18" 
                      Foreground="White" 
                      Width="200"
-                     x:Name="TabItemKundenHistory">
+                     x:Name="TabItemKundenUebersicht">
+                <Grid Margin="5,0,5,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" 
+                           Content="Kunden:"></Label>
+                    <ListView Margin="5,5,5,5" 
+                              Name="KundenList" 
+                              ItemsSource="{Binding Tickets}"
+                              Grid.Row="1">
+                        <ListView.Background>
+                            <LinearGradientBrush EndPoint="0.939,0.919" StartPoint="0.061,0.081">
+                                <GradientStop Color="GhostWhite" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ListView.Background>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}"  >
+                                <Setter Property="Height" Value="24" />
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Background" Value="Lavender" />
+                                <Setter Property="Foreground" Value="Blue"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Foreground" Value="DarkBlue" />
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC704" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF4E057" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4E057" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="DarkBlue"/>
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC790" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF9A090" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4A099" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
+                                <GridViewColumn Header="Kunde" Width="auto" DisplayMemberBinding="{Binding Path=Kunde.VollerName}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label Grid.Row="2"
+                           Content="Tickets:"></Label>
+                    <ListView Margin="5,5,5,5" 
+                              Name="KundenTicketList" 
+                              ItemsSource="{Binding Tickets}"
+                              Grid.Row="3">
+                        <ListView.Background>
+                            <LinearGradientBrush EndPoint="0.939,0.919" StartPoint="0.061,0.081">
+                                <GradientStop Color="GhostWhite" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ListView.Background>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}"  >
+                                <Setter Property="Height" Value="24" />
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Background" Value="Lavender" />
+                                <Setter Property="Foreground" Value="Blue"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Foreground" Value="DarkBlue" />
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC704" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF4E057" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4E057" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="DarkBlue"/>
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC790" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF9A090" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4A099" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
+                                <GridViewColumn Header="TicketID" Width="auto" DisplayMemberBinding="{Binding Path=Id}"/>
+                                <GridViewColumn Header="Priorität" Width="auto" DisplayMemberBinding="{Binding Path=Priorität}"/>
+                                <GridViewColumn Header="Status" Width="auto" DisplayMemberBinding="{Binding Path=Status.Bezeichnung}"/>
+                                <GridViewColumn Header="Bearbeiter" Width="auto" DisplayMemberBinding="{Binding Path=AktuellerBearbeiterName}"/>
+                                <GridViewColumn Header="Datum" Width="auto" DisplayMemberBinding="{Binding Path=GetDatumFormated}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Grid.Row="4"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal"
+                                Height="50">
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="140"
+                                Click="KundenUebersichtLöschenButton_OnClick"
+                                Name="KundenTicketLöschenButton">Löschen</Button>
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="140"
+                                Click="KundenUebersichtBearbeitenButton_OnClick">Bearbeiten</Button>
+                    </StackPanel>
+                </Grid>
             </TabItem>
+
+            <!-- Personen View -->
             <TabItem Padding="0" 
                      Margin="5,0,5,0" 
                      Header="Personen"
@@ -349,7 +499,7 @@
                      Foreground="White" 
                      Width="200"
                      x:Name="TabItemPersonen">
-                <Grid>
+                <Grid Margin="5,5,5,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -490,6 +640,8 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            
+            <!-- Kategorie View -->
             <TabItem Padding="0" 
                      Margin="5,0,5,0" 
                      Header="Kategorien"
@@ -497,7 +649,7 @@
                      Foreground="White" 
                      Width="200"
                      x:Name="TabItemKategorien">
-                <Grid>
+                <Grid Margin="5,5,5,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -692,6 +844,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            
         </TabControl>
     </Grid>
 </Window>

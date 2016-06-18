@@ -43,7 +43,7 @@ namespace CurrySupport.GUI
                     DataContext = new TicketViewModel();
                 }
             }
-            if (TabItemKundenHistory.IsSelected)
+            if (TabItemKundenUebersicht.IsSelected)
             {
 
             }
@@ -142,6 +142,16 @@ namespace CurrySupport.GUI
         private void KategorieundUnterkategorieAenderungenUebernehmenButton_Click(object sender, RoutedEventArgs e)
         {
             ((KategorieViewModel)DataContext).AenderungenUebernehmen();
+        }
+
+        private void KundenUebersichtBearbeitenButton_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void KundenUebersichtLöschenButton_OnClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
