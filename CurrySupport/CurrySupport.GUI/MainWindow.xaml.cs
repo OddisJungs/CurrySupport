@@ -35,31 +35,17 @@ namespace CurrySupport.GUI
                 {
                     DataContext = new TicketListeViewModel();
                 }
-                TextBlockTicketList.Background = Brushes.Blue;
-            }
-            else
-            {
-                TextBlockTicketList.Background = Brushes.LightSkyBlue;
             }
             if (TabItemTicket.IsSelected)
             {
-                TextBlockTicket.Background = Brushes.Blue;
                 if (DataContext.GetType() != typeof(TicketViewModel))
                 {
                     DataContext = new TicketViewModel();
                 }
             }
-            else
-            {
-                TextBlockTicket.Background = Brushes.LightSkyBlue;
-            }
             if (TabItemKundenHistory.IsSelected)
             {
-                TextBlockKundenHistory.Background = Brushes.Blue;
-            }
-            else
-            {
-                TextBlockKundenHistory.Background = Brushes.LightSkyBlue;
+
             }
             if (TabItemPersonen.IsSelected)
             {
@@ -67,11 +53,6 @@ namespace CurrySupport.GUI
                 {
                     DataContext = new PersonenViewModel();
                 }
-                TextBlockPersonen.Background = Brushes.Blue;
-            }
-            else
-            {
-                TextBlockPersonen.Background = Brushes.LightSkyBlue;
             }
             if (TabItemKategorien.IsSelected)
             {
@@ -79,11 +60,6 @@ namespace CurrySupport.GUI
                 {
                     DataContext = new KategorieViewModel();
                 }
-                TextBlockKategorien.Background = Brushes.Blue;
-            }
-            else
-            {
-                TextBlockKategorien.Background = Brushes.LightSkyBlue;
             }
         }
 

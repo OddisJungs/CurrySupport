@@ -3,20 +3,51 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CurrySupport.GUI"
         mc:Ignorable="d"
         Title="CurrySupport" 
         Height="700" 
-        Width="1200">
+        MinHeight="700"
+        Width="1200"
+        MinWidth="1200">
     <Window.Resources>
         <DataTemplate x:Key="BlueHeader">
-            <StackPanel Orientation="Horizontal" Margin="0" Width="120" Background="Blue">
-                <TextBlock Margin="10,10,10,10" 
+            <StackPanel Orientation="Horizontal" Margin="0" Width="150" Background="Blue">
+                <TextBlock Margin="10,5,10,5" 
                            Text="{Binding}" 
 		                   VerticalAlignment="Center" 
                            Foreground="White"/>
             </StackPanel>
         </DataTemplate>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid>
+                            <Border 
+                                Name="Border"
+                                Margin="0,0,-4,0" 
+                                Background="LightSkyBlue"
+                                BorderThickness="0"
+                                CornerRadius="2,12,0,0" >
+                                <ContentPresenter x:Name="ContentSite"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    ContentSource="Header"
+                                    Margin="12,2,12,2"
+                                    RecognizesAccessKey="True"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Panel.ZIndex" Value="100" />
+                                <Setter TargetName="Border" Property="Background" Value="Blue" />
+                                <Setter TargetName="Border" Property="BorderThickness" Value="1,1,1,0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <TabControl SelectionChanged="TabControl1_OnSelectionChanged" 
@@ -26,19 +57,11 @@
                     BorderThickness="1, 5, 1, 1">
             <TabItem Padding="0" 
                      Margin="0,0,5,0" 
-                     x:Name="TabItemTicketlist">
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Ticketliste" 
-                                   Background="LightSkyBlue" 
-                                   Padding="5" 
-                                   FontSize="18" 
-                                   Foreground="White" 
-                                   Width="195" 
-                                   TextAlignment="Center" 
-                                   x:Name="TextBlockTicketList"/>
-                    </StackPanel>
-                </TabItem.Header>
+                     x:Name="TabItemTicketlist"
+                     Header="TicketListe"
+                     Width="200"
+                     FontSize="18"
+                     Foreground="White">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
@@ -56,6 +79,7 @@
                         <ListView.ItemContainerStyle>
                             <Style TargetType="{x:Type ListViewItem}"  >
                                 <Setter Property="Height" Value="24" />
+                                <Setter Property="FontSize" Value="14" />
                                 <Setter Property="Background" Value="Lavender" />
                                 <Setter Property="Foreground" Value="Blue"/>
                                 <Style.Triggers>
@@ -67,6 +91,18 @@
                                                     <GradientStop Color="#FFFFC704" Offset="0.986"/>
                                                     <GradientStop Color="#FFF4E057" Offset="0.5"/>
                                                     <GradientStop Color="#FFF4E057" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="DarkBlue"/>
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC790" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF9A090" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4A099" Offset="0.51"/>
                                                 </LinearGradientBrush>
                                             </Setter.Value>
                                         </Setter>
@@ -115,19 +151,11 @@
             </TabItem>
             <TabItem Padding="0" 
                      Margin="5,0,5,0" 
-                     x:Name="TabItemTicket">
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Ticket" 
-                                   Background="LightSkyBlue" 
-                                   Padding="5" 
-                                   FontSize="18" 
-                                   Foreground="White" 
-                                   Width="200" 
-                                   TextAlignment="Center"
-                                   x:Name="TextBlockTicket"/>
-                    </StackPanel>
-                </TabItem.Header>
+                     x:Name="TabItemTicket"
+                     Header="Ticket"
+                     FontSize="18"
+                     Foreground="White"
+                     Width="200">
                 <!-- Ticket View -->
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -148,31 +176,142 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Kunde:" Margin="0,5"></TextBlock>
-                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Bearbeiter:"  Margin="0,5"></TextBlock>
-                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Kategorie:"  Margin="0, 5"></TextBlock>
-                    <TextBlock Grid.Row="3" Grid.Column="1" Text="Unterkategorie:"  Margin="0,5"></TextBlock>
-                    <TextBlock Grid.Row="4" Grid.Column="1" Text="Priorität:"  Margin="0,5"></TextBlock>
-                    <TextBlock Grid.Row="5" Grid.Column="1" Text="Status:"  Margin="0,5"></TextBlock>
-                    <ComboBox  Grid.Row="0" Grid.Column="2" Height="20" ItemsSource="{Binding Path=KundenListe}" SelectedValue="{Binding Path=Ticket.Kunde}" DisplayMemberPath="VollerName"></ComboBox>
-                    <ComboBox  Grid.Row="1" Grid.Column="2" Height="20" ItemsSource="{Binding Path=BearbeiterListe}" SelectedValue="{Binding Path=AktuellerBearbeiter}" DisplayMemberPath="VollerName"></ComboBox>
-                    <ComboBox  Grid.Row="2" Grid.Column="2" Height="20" ItemsSource="{Binding Path=Kategorien}" SelectedValue="{Binding Path=Ticket.Kategorie}" DisplayMemberPath="Bezeichnung"></ComboBox>
-                    <ComboBox  Grid.Row="3" Grid.Column="2" Height="20" ItemsSource="{Binding Path=Unterkategorien}" SelectedValue="{Binding Path=Ticket.Unterkategorie}" DisplayMemberPath="Bezeichnung"></ComboBox>
-                    <TextBox   Grid.Row="4" Grid.Column="2" Height="20" Text="{Binding Path=Ticket.Priorität}"></TextBox>
-                    <ComboBox  Grid.Row="5" Grid.Column="2" Height="20" ItemsSource="{Binding Path=Statusse}" SelectedValue="{Binding Path=Ticket.Status}" DisplayMemberPath="Bezeichnung" ></ComboBox>
-                    <TextBlock Grid.Row="6" Grid.Column="1" Text="Problembeschreibung:" Margin="0,5"></TextBlock>
-                    <TextBlock Grid.Row="6" Grid.Column="2" Text="Problemlösung:" Margin="0,5"></TextBlock>
-                    <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=Ticket.Beschreibung}"></TextBox>
-                    <TextBox Grid.Row="7" Grid.Column="2" Text="{Binding Path=Ticket.Lösung}"></TextBox>
-                    <ListView Margin="0, 10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="8">
+                    <TextBlock Grid.Row="0" 
+                               Grid.Column="1" 
+                               Text="Kunde:" 
+                               Margin="0,5"
+                               Foreground="Black"></TextBlock>
+                    <TextBlock Grid.Row="1" 
+                               Grid.Column="1" 
+                               Text="Bearbeiter:" 
+                               Margin="0,5"
+                               Foreground="Black"></TextBlock>
+                    <TextBlock Grid.Row="2" 
+                               Grid.Column="1" 
+                               Text="Kategorie:" 
+                               Margin="0, 5"
+                               Foreground="Black"></TextBlock>
+                    <TextBlock Grid.Row="3" 
+                               Grid.Column="1" 
+                               Text="Unterkategorie:" 
+                               Margin="0,5"
+                               Foreground="Black"></TextBlock>
+                    <TextBlock Grid.Row="4" 
+                               Grid.Column="1" 
+                               Text="Priorität:" 
+                               Margin="0,5"
+                               Foreground="Black"></TextBlock>
+                    <TextBlock Grid.Row="5" 
+                               Grid.Column="1" 
+                               Text="Status:" 
+                               Margin="0,5"
+                               Foreground="Black"></TextBlock>
+                    <ComboBox Grid.Row="0" 
+                              Grid.Column="2" 
+                              Height="20" 
+                              ItemsSource="{Binding Path=KundenListe}" 
+                              SelectedValue="{Binding Path=Ticket.Kunde}" 
+                              DisplayMemberPath="VollerName"></ComboBox>
+                    <ComboBox Grid.Row="1" 
+                              Grid.Column="2" 
+                              Height="20" 
+                              ItemsSource="{Binding Path=BearbeiterListe}" 
+                              SelectedValue="{Binding Path=AktuellerBearbeiter}" 
+                              DisplayMemberPath="VollerName"></ComboBox>
+                    <ComboBox Grid.Row="2" 
+                              Grid.Column="2" 
+                              Height="20" 
+                              ItemsSource="{Binding Path=Kategorien}" 
+                              SelectedValue="{Binding Path=Ticket.Kategorie}" 
+                              DisplayMemberPath="Bezeichnung"></ComboBox>
+                    <ComboBox Grid.Row="3" 
+                              Grid.Column="2" 
+                              Height="20" 
+                              ItemsSource="{Binding Path=Unterkategorien}" 
+                              SelectedValue="{Binding Path=Ticket.Unterkategorie}" 
+                              DisplayMemberPath="Bezeichnung"></ComboBox>
+                    <TextBox Grid.Row="4" 
+                             Grid.Column="2" 
+                             Height="20" 
+                             Text="{Binding Path=Ticket.Priorität}"></TextBox>
+                    <ComboBox Grid.Row="5" 
+                              Grid.Column="2" 
+                              Height="20" 
+                              ItemsSource="{Binding Path=Statusse}" 
+                              SelectedValue="{Binding Path=Ticket.Status}" 
+                              DisplayMemberPath="Bezeichnung" ></ComboBox>
+                    <TextBlock Grid.Row="6" 
+                               Grid.Column="1" 
+                               Text="Problembeschreibung:" 
+                               Margin="0,5"
+                               Foreground="Black"></TextBlock>
+                    <TextBlock Grid.Row="6" 
+                               Grid.Column="2" 
+                               Text="Problemlösung:" 
+                               Margin="0,5"
+                               Foreground="Black"></TextBlock>
+                    <TextBox Grid.Row="7" 
+                             Grid.Column="1" 
+                             Text="{Binding Path=Ticket.Beschreibung}"></TextBox>
+                    <TextBox Grid.Row="7" 
+                             Grid.Column="2" 
+                             Text="{Binding Path=Ticket.Lösung}"></TextBox>
+                    <ListView Margin="0, 10" 
+                              Grid.Column="1" 
+                              Grid.ColumnSpan="2" 
+                              Grid.Row="8">
+                        <ListView.Background>
+                            <LinearGradientBrush EndPoint="0.939,0.919" StartPoint="0.061,0.081">
+                                <GradientStop Color="GhostWhite" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ListView.Background>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}"  >
+                                <Setter Property="Height" Value="24" />
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Background" Value="Lavender" />
+                                <Setter Property="Foreground" Value="Blue"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Foreground" Value="DarkBlue" />
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC704" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF4E057" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4E057" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="DarkBlue"/>
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC790" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF9A090" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4A099" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Person"></GridViewColumn>
-                                <GridViewColumn Header="Bearbeitet"></GridViewColumn>
+                            <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
+                                <GridViewColumn Header="Person" Width="auto"></GridViewColumn>
+                                <GridViewColumn Header="Bearbeitet" Width="auto"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <StackPanel Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <StackPanel Grid.Row="9" 
+                                Grid.Column="0" 
+                                Grid.ColumnSpan="3" 
+                                HorizontalAlignment="Right" 
+                                Orientation="Horizontal">
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -197,35 +336,19 @@
             </TabItem>
             <TabItem Padding="0" 
                      Margin="5,0,5,0" 
+                     Header="Kunden Übersicht"
+                     FontSize="18" 
+                     Foreground="White" 
+                     Width="200"
                      x:Name="TabItemKundenHistory">
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Kunden History" 
-                                   Background="LightSkyBlue" 
-                                   Padding="5" 
-                                   FontSize="18" 
-                                   Foreground="White" 
-                                   Width="200" 
-                                   TextAlignment="Center"
-                                   x:Name="TextBlockKundenHistory"/>
-                    </StackPanel>
-                </TabItem.Header>
             </TabItem>
             <TabItem Padding="0" 
                      Margin="5,0,5,0" 
+                     Header="Personen"
+                     FontSize="18" 
+                     Foreground="White" 
+                     Width="200"
                      x:Name="TabItemPersonen">
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Personen" 
-                                   Background="LightSkyBlue" 
-                                   Padding="5" 
-                                   FontSize="18" 
-                                   Foreground="White" 
-                                   Width="200" 
-                                   TextAlignment="Center"
-                                   x:Name="TextBlockPersonen"/>
-                    </StackPanel>
-                </TabItem.Header>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -236,29 +359,97 @@
                         <RowDefinition/>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <ListView Name="Personen" SelectedItem="{Binding AusgewaehltePerson}" ItemsSource="{Binding Personen}">
+                    <ListView Name="Personen" 
+                              SelectedItem="{Binding AusgewaehltePerson}" 
+                              ItemsSource="{Binding Personen}">
+                        <ListView.Background>
+                            <LinearGradientBrush EndPoint="0.939,0.919" StartPoint="0.061,0.081">
+                                <GradientStop Color="GhostWhite" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ListView.Background>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}"  >
+                                <Setter Property="Height" Value="24" />
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Background" Value="Lavender" />
+                                <Setter Property="Foreground" Value="Blue"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Foreground" Value="DarkBlue" />
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC704" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF4E057" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4E057" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="DarkBlue"/>
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC790" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF9A090" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4A099" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Vorname" Width="200" DisplayMemberBinding="{Binding Path=Vorname}" ></GridViewColumn>
-                                <GridViewColumn Header="Nachname" Width="200" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
+                            <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
+                                <GridViewColumn Header="Vorname" Width="auto" DisplayMemberBinding="{Binding Path=Vorname}" ></GridViewColumn>
+                                <GridViewColumn Header="Nachname" Width="auto" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <StackPanel Grid.Column="1">
-                        <TextBlock Margin="10,5" Padding="2" Text="Name"></TextBlock>
-                        <TextBlock Margin="10,5" Padding="2" Text="Vorname"></TextBlock>
-                        <TextBlock Margin="10,5" Padding="2" Text="Adresse"></TextBlock>
-                        <TextBlock Margin="10,5" Padding="2" Text="Telefonnummer"></TextBlock>
-                        <TextBlock Margin="10,5" Padding="2" Text="Rolle der Person"></TextBlock>
+                    <StackPanel Grid.Row="0" 
+                                Grid.Column="1">
+                        <TextBlock Margin="10,5" 
+                                   Padding="2" 
+                                   Text="Name"
+                                   Foreground="Black"></TextBlock>
+                        <TextBlock Margin="10,5" 
+                                   Padding="2" 
+                                   Text="Vorname"
+                                   Foreground="Black"></TextBlock>
+                        <TextBlock Margin="10,5" 
+                                   Padding="2" 
+                                   Text="Adresse"
+                                   Foreground="Black"></TextBlock>
+                        <TextBlock Margin="10,5" 
+                                   Padding="2" 
+                                   Text="Telefonnummer"
+                                   Foreground="Black"></TextBlock>
+                        <TextBlock Margin="10,5" 
+                                   Padding="2" 
+                                   Text="Rolle der Person"
+                                   Foreground="Black"></TextBlock>
                     </StackPanel>
-                    <StackPanel Grid.Column="2">
-                        <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Name}"></TextBox>
-                        <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Vorname}"></TextBox>
-                        <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Adresse}"></TextBox>
-                        <TextBox Margin="10,5" Text="{Binding Path=AusgewaehltePerson.Telefonnummer}"></TextBox>
-                        <ComboBox Margin="10.5" DisplayMemberPath="Bezeichnung" ItemsSource="{Binding Path=Rollen}" SelectedValue="{Binding Path=AusgewaehltePerson.Rolle}"></ComboBox>
+                    <StackPanel Grid.Row="0" 
+                                Grid.Column="2">
+                        <TextBox Margin="10,5" 
+                                 Text="{Binding Path=AusgewaehltePerson.Name}"></TextBox>
+                        <TextBox Margin="10,5" 
+                                 Text="{Binding Path=AusgewaehltePerson.Vorname}"></TextBox>
+                        <TextBox Margin="10,5" 
+                                 Text="{Binding Path=AusgewaehltePerson.Adresse}"></TextBox>
+                        <TextBox Margin="10,5" 
+                                 Text="{Binding Path=AusgewaehltePerson.Telefonnummer}"></TextBox>
+                        <ComboBox Margin="10.5" 
+                                  DisplayMemberPath="Bezeichnung" 
+                                  ItemsSource="{Binding Path=Rollen}" 
+                                  SelectedValue="{Binding Path=AusgewaehltePerson.Rolle}"></ComboBox>
                     </StackPanel>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <StackPanel Grid.Row="1" 
+                                Grid.Column="0"
+                                Orientation="Horizontal">
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -267,7 +458,8 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="140" Click="PersonenHinzufügenButton_Click">Hinzufügen</Button>
+                                Width="140" 
+                                Click="PersonenHinzufügenButton_Click">Hinzufügen</Button>
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -276,9 +468,14 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="140" Click="PersonenLöschenButton_Click">Löschen</Button>
+                                Width="140" 
+                                Click="PersonenLöschenButton_Click">Löschen</Button>
                     </StackPanel>
-                    <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <StackPanel Grid.Row="1" 
+                                Grid.Column="1" 
+                                Grid.ColumnSpan="2" 
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Right">
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -287,24 +484,19 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="140" VerticalAlignment="Bottom" Click="PersonenÜbernehmenButton_Click">Übernehmen</Button>
+                                Width="140" 
+                                VerticalAlignment="Bottom" 
+                                Click="PersonenÜbernehmenButton_Click">Übernehmen</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Padding="0" 
                      Margin="5,0,5,0" 
+                     Header="Kategorien"
+                     FontSize="18" 
+                     Foreground="White" 
+                     Width="200"
                      x:Name="TabItemKategorien">
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Kategorien" 
-                                   Background="LightSkyBlue" 
-                                   Padding="5" FontSize="18" 
-                                   Foreground="White" 
-                                   Width="200" 
-                                   TextAlignment="Center"
-                                   x:Name="TextBlockKategorien"/>
-                    </StackPanel>
-                </TabItem.Header>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -317,7 +509,9 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <ListView Name="Kategorien" SelectedItem="{Binding AusgewaehlteKategorie}" ItemsSource="{Binding Kategorien}">
+                    <ListView Name="Kategorien" 
+                              SelectedItem="{Binding AusgewaehlteKategorie}" 
+                              ItemsSource="{Binding Kategorien}">
                         <ListView.Background>
                             <LinearGradientBrush EndPoint="0.939,0.919" StartPoint="0.061,0.081">
                                 <GradientStop Color="GhostWhite" Offset="0"/>
@@ -325,10 +519,11 @@
                             </LinearGradientBrush>
                         </ListView.Background>
                         <ListView.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListViewItem}"  >
+                            <Style TargetType="{x:Type ListViewItem}">
                                 <Setter Property="Height" Value="24" />
-                                <Setter Property="Background" Value="#5EF4E057" />
-                                <Setter Property="Foreground" Value="#FF4B94EC"/>
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Background" Value="Lavender" />
+                                <Setter Property="Foreground" Value="Blue"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="true">
                                         <Setter Property="Foreground" Value="DarkBlue" />
@@ -342,16 +537,34 @@
                                             </Setter.Value>
                                         </Setter>
                                     </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="DarkBlue"/>
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC790" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF9A090" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4A099" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
                                 </Style.Triggers>
                             </Style>
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
-                                <GridViewColumn Header="Kategorie" Width="Auto" DisplayMemberBinding="{Binding Path=Bezeichnung}"/>
+                                <GridViewColumn Header="Kategorie" 
+                                                Width="Auto" 
+                                                DisplayMemberBinding="{Binding Path=Bezeichnung}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <ListView Grid.Column="1" Name="UnterKategorien" SelectedItem="{Binding AusgewaehlteUnterkategorie}" ItemsSource="{Binding AusgewaehlteKategorie.Unterkategorien}">
+                    <ListView Grid.Row="0" 
+                              Grid.Column="1" 
+                              Name="UnterKategorien" 
+                              SelectedItem="{Binding AusgewaehlteUnterkategorie}" 
+                              ItemsSource="{Binding AusgewaehlteKategorie.Unterkategorien}">
                         <ListView.Background>
                             <LinearGradientBrush EndPoint="0.939,0.919" StartPoint="0.061,0.081">
                                 <GradientStop Color="GhostWhite" Offset="0"/>
@@ -359,10 +572,11 @@
                             </LinearGradientBrush>
                         </ListView.Background>
                         <ListView.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListViewItem}"  >
+                            <Style TargetType="{x:Type ListViewItem}">
                                 <Setter Property="Height" Value="24" />
-                                <Setter Property="Background" Value="#5EF4E057" />
-                                <Setter Property="Foreground" Value="#FF4B94EC"/>
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Background" Value="Lavender" />
+                                <Setter Property="Foreground" Value="Blue"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="true">
                                         <Setter Property="Foreground" Value="DarkBlue" />
@@ -376,24 +590,48 @@
                                             </Setter.Value>
                                         </Setter>
                                     </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="DarkBlue"/>
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC790" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF9A090" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4A099" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
                                 </Style.Triggers>
                             </Style>
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
-                                <GridViewColumn Header="Unterkategorie" Width="Auto" DisplayMemberBinding="{Binding Path=Bezeichnung}" ></GridViewColumn>
+                                <GridViewColumn Header="Unterkategorie" 
+                                                Width="Auto" 
+                                                DisplayMemberBinding="{Binding Path=Bezeichnung}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <StackPanel Grid.Column="2">
-                        <TextBlock Text="Kategorie:" Padding="10"></TextBlock>
-                        <TextBlock Text="Unterkategorie:" Padding="10"></TextBlock>
+                    <StackPanel Grid.Row="0" 
+                                Grid.Column="2">
+                        <TextBlock Text="Kategorie:" 
+                                   Padding="10"
+                                   Foreground="Black"></TextBlock>
+                        <TextBlock Text="Unterkategorie:" 
+                                   Padding="10"
+                                   Foreground="Black"></TextBlock>
                     </StackPanel>
-                    <StackPanel Grid.Column="3">
-                        <TextBox Margin="10,5" Text="{Binding Path=AusgewaehlteKategorie.Bezeichnung}"></TextBox>
-                        <TextBox Margin="10,5" Text="{Binding Path=AusgewaehlteUnterkategorie.Bezeichnung}"></TextBox>
+                    <StackPanel Grid.Row="0" 
+                                Grid.Column="3">
+                        <TextBox Margin="10,5" 
+                                 Text="{Binding Path=AusgewaehlteKategorie.Bezeichnung}"></TextBox>
+                        <TextBox Margin="10,5" 
+                                 Text="{Binding Path=AusgewaehlteUnterkategorie.Bezeichnung}"></TextBox>
                     </StackPanel>
-                    <StackPanel Grid.Row="1" Margin="5">
+                    <StackPanel Grid.Row="1" 
+                                Grid.Column="0"
+                                Margin="5">
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -402,7 +640,8 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="auto" Click="KategorieHinzufuegenButton_Click">Hinzufügen</Button>
+                                Width="auto" 
+                                Click="KategorieHinzufuegenButton_Click">Hinzufügen</Button>
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -411,9 +650,12 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="auto" Click="KategorieLoeschenButton_Click">Löschen</Button>
+                                Width="auto" 
+                                Click="KategorieLoeschenButton_Click">Löschen</Button>
                     </StackPanel>
-                    <StackPanel Grid.Row="1" Grid.Column="1"  Margin="5">
+                    <StackPanel Grid.Row="1" 
+                                Grid.Column="1" 
+                                Margin="5">
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -422,7 +664,8 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="auto" Click="UnterkategorieHinzufuegenButton_Click">Hinzufügen</Button>
+                                Width="auto" 
+                                Click="UnterkategorieHinzufuegenButton_Click">Hinzufügen</Button>
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -431,9 +674,11 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="auto" Click="UnterkategorieLoeschenButton_Click">Löschen</Button>
+                                Width="auto" 
+                                Click="UnterkategorieLoeschenButton_Click">Löschen</Button>
                     </StackPanel>
-                    <StackPanel Grid.Column="3" Grid.Row="1">
+                    <StackPanel Grid.Column="3"
+                                Grid.Row="1">
                         <Button Height="30"
                                 FontSize="14"
                                 Padding="3"
@@ -442,7 +687,8 @@
                                 Foreground="White"
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
-                                Width="auto" Click="KategorieundUnterkategorieAenderungenUebernehmenButton_Click">Übernehmen</Button>
+                                Width="auto" 
+                                Click="KategorieundUnterkategorieAenderungenUebernehmenButton_Click">Übernehmen</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
