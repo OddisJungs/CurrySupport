@@ -31,9 +31,21 @@ namespace CurrySupport.DataModel.Migrations
                 new Status()
                 {
                     Id = 1,
-                    Bezeichnung = "Bereit",
-                    Beschreibung = "Alles Bereit"
-                });
+                    Bezeichnung = "Erstellt",
+                    Beschreibung = "Dieses Ticket wurde gerade erstellt."
+                },
+                new Status()
+                {
+                    Id = 2,
+                    Bezeichnung = "In Bearbeitung",
+                    Beschreibung = "Dieses Ticket wird gerade von einem Bearbeiter bearbeitet."
+                }, 
+                new Status()
+                {
+                    Id = 3,
+                    Bezeichnung = "Fertiggestellt",
+                    Beschreibung = "Die Bearbeitung des Tickets wurde beendet."
+                });        
             context.SaveChanges();
             context.AlleKategorien.AddOrUpdate(x => x.Id,
                 new Kategorie()
