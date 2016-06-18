@@ -37,7 +37,6 @@ namespace CurrySupport.DataModel
         public virtual ObservableCollection<Ticket> Kunden_Tickets { get; set; }
         public virtual ObservableCollection<Ticket> Bearbeiter_Tickets { get; set; }
 
-
         public String VollerName
         {
             get { return Vorname + " " + Name; }

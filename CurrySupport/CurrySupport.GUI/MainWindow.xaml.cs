@@ -45,7 +45,10 @@ namespace CurrySupport.GUI
             }
             if (TabItemKundenUebersicht.IsSelected)
             {
-
+                if (DataContext.GetType() != typeof(KundenUebersichtViewModel))
+                {
+                    DataContext = new KundenUebersichtViewModel();
+                }
             }
             if (TabItemPersonen.IsSelected)
             {
@@ -98,11 +101,6 @@ namespace CurrySupport.GUI
             ((PersonenViewModel)DataContext).AusgewaehltePersonLöschen();
         }
 
-        private void PersonenAbbrechenButton_Click(object sender, RoutedEventArgs e)
-        {
-            ((PersonenViewModel)DataContext).PersonAuswahlAufheben();
-        }
-
         private void PersonenÜbernehmenButton_Click(object sender, RoutedEventArgs e)
         {
             ((PersonenViewModel)DataContext).AusgewaehltePersonÄnderungÜbernehmen();
@@ -146,12 +144,27 @@ namespace CurrySupport.GUI
 
         private void KundenUebersichtBearbeitenButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (KundenTicketList.SelectedItem != null)
+            {
+                dynamic item = KundenTicketList.SelectedItem as dynamic;
+                int ticketId = item.Id;
 
+                TabItemTicketlist.IsSelected = false;
+                TabItemTicket.IsSelected = true;
+
+                DataContext = new TicketViewModel(ticketId);
+            }
         }
 
         private void KundenUebersichtLöschenButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (KundenTicketList.SelectedItem != null)
+            {
+                dynamic item = KundenTicketList .SelectedItem as dynamic;
+                int ticketId = item.Id;
 
+                ((KundenUebersichtViewModel)DataContext).AusgewähltesTicketLöschen(ticketId);
+            }
         }
     }
 }

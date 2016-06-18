@@ -80,8 +80,8 @@ namespace CurrySupport.DataModel.Migrations
                 new Person()
                 {
                     Id = 2,
-                    Name = "Tschedircovic",
-                    Vorname = "Schnidrinovic",
+                    Name = "Schnider",
+                    Vorname = "Cédric",
                     Telefonnummer = "0417879143",
                     Adresse = "Hinterwäldlerstrasse 69",
                     Aktiv = true,

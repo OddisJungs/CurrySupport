@@ -358,7 +358,8 @@
                            Content="Kunden:"></Label>
                     <ListView Margin="5,5,5,5" 
                               Name="KundenList" 
-                              ItemsSource="{Binding Tickets}"
+                              SelectedItem="{Binding AusgewaehlterKunde}"
+                              ItemsSource="{Binding Kunden}"
                               Grid.Row="1">
                         <ListView.Background>
                             <LinearGradientBrush EndPoint="0.939,0.919" StartPoint="0.061,0.081">
@@ -402,7 +403,7 @@
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
-                                <GridViewColumn Header="Kunde" Width="auto" DisplayMemberBinding="{Binding Path=Kunde.VollerName}"/>
+                                <GridViewColumn Header="Kunde" Width="auto" DisplayMemberBinding="{Binding Path=VollerName}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -410,7 +411,7 @@
                            Content="Tickets:"></Label>
                     <ListView Margin="5,5,5,5" 
                               Name="KundenTicketList" 
-                              ItemsSource="{Binding Tickets}"
+                              ItemsSource="{Binding AusgewaehlterKunde.Kunden_Tickets}"
                               Grid.Row="3">
                         <ListView.Background>
                             <LinearGradientBrush EndPoint="0.939,0.919" StartPoint="0.061,0.081">
