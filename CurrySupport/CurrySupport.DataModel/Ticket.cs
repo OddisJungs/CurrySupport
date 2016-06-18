@@ -12,6 +12,11 @@ namespace CurrySupport.DataModel
 {
     public class Ticket
     {
+        public Ticket()
+        {
+            BearbeiterHistory = new ObservableCollection<TicketBearbeiterHistory>();
+        }
+
         [Required]
         public int Id { get; set; }
 
