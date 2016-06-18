@@ -25,6 +25,11 @@ namespace CurrySupport.DataModel
                         .HasRequired(m => m.Kunde)
                         .WithMany(t => t.Kunden_Tickets)
                         .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Ticket>()
+                .HasMany(m => m.BearbeiterHistory)
+                .WithRequired(t => t.Ticket)
+                .WillCascadeOnDelete(true);
         }
     }
 }

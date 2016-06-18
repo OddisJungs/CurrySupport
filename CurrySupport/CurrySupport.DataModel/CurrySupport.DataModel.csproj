@@ -80,6 +80,14 @@
     <Compile Include="Migrations\201606171010314_add-history-of-editors.Designer.cs">
       <DependentUpon>201606171010314_add-history-of-editors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606182025378_AddSeedData.cs" />
+    <Compile Include="Migrations\201606182025378_AddSeedData.Designer.cs">
+      <DependentUpon>201606182025378_AddSeedData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606182133227_SeedData.cs" />
+    <Compile Include="Migrations\201606182133227_SeedData.Designer.cs">
+      <DependentUpon>201606182133227_SeedData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606171010314_add-history-of-editors.resx">
       <DependentUpon>201606171010314_add-history-of-editors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606182025378_AddSeedData.resx">
+      <DependentUpon>201606182025378_AddSeedData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606182133227_SeedData.resx">
+      <DependentUpon>201606182133227_SeedData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,6 +9,9 @@ namespace CurrySupport.DataModel
         public int Id { get; set; }
 
         [Required]
+        public virtual Ticket Ticket { get; set; }
+
+        [Required]
         public virtual Person Person { get; set; }
 
         [Required]
