@@ -15,6 +15,7 @@ namespace CurrySupport.Businesslogik
             dbContext = new CurrySupportContext();
             Ticket = new Ticket();
             Ticket.Erstellungsdatum = DateTime.Now;
+            AktuellerBearbeiter = new Person();
             Construct();
         }
 
@@ -22,6 +23,7 @@ namespace CurrySupport.Businesslogik
         {
             dbContext = new CurrySupportContext();
             Ticket = dbContext.AlleTickets.Find(ticketId);
+            AktuellerBearbeiter = Ticket.BearbeiterHistory.OrderByDescending(x => x.Zuweisungsdatum).FirstOrDefault().Person;
             Construct();
         }
         private void Construct()
@@ -45,6 +47,7 @@ namespace CurrySupport.Businesslogik
         }
 
         public Ticket Ticket { get; set; }
+        public Person AktuellerBearbeiter { get; set; }
         public ObservableCollection<Kategorie> Kategorien { get; set; }
         public ObservableCollection<Unterkategorie> Unterkategorien { get; set; }
         public ObservableCollection<Person> BearbeiterListe { get; set; }

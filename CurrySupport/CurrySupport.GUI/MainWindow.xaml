@@ -79,8 +79,8 @@
                                 <GridViewColumn Header="TicketID" Width="auto" DisplayMemberBinding="{Binding Path=Id}"/>
                                 <GridViewColumn Header="Priorität" Width="auto" DisplayMemberBinding="{Binding Path=Priorität}"/>
                                 <GridViewColumn Header="Status" Width="auto" DisplayMemberBinding="{Binding Path=Status.Bezeichnung}"/>
-                                <GridViewColumn Header="Bearbeiter" Width="auto" DisplayMemberBinding="{Binding Path=GetVollerBearbeiterName}"/>
-                                <GridViewColumn Header="Kunde" Width="auto" DisplayMemberBinding="{Binding Path=GetVollerKundenName}"/>
+                                <GridViewColumn Header="Bearbeiter" Width="auto" DisplayMemberBinding="{Binding Path=AktuellerBearbeiterName}"/>
+                                <GridViewColumn Header="Kunde" Width="auto" DisplayMemberBinding="{Binding Path=Kunde.VollerName}"/>
                                 <GridViewColumn Header="Datum" Width="auto" DisplayMemberBinding="{Binding Path=GetDatumFormated}"/>
                             </GridView>
                         </ListView.View>
@@ -154,8 +154,8 @@
                     <TextBlock Grid.Row="3" Grid.Column="1" Text="Unterkategorie:"  Margin="0,5"></TextBlock>
                     <TextBlock Grid.Row="4" Grid.Column="1" Text="Priorität:"  Margin="0,5"></TextBlock>
                     <TextBlock Grid.Row="5" Grid.Column="1" Text="Status:"  Margin="0,5"></TextBlock>
-                    <ComboBox  Grid.Row="0" Grid.Column="2" Height="20" ItemsSource="{Binding Path=KundenListe}" SelectedValue="{Binding Path=Ticket.Kunde}" DisplayMemberPath="GetVollerName"></ComboBox>
-                    <ComboBox  Grid.Row="1" Grid.Column="2" Height="20" ItemsSource="{Binding Path=BearbeiterListe}" SelectedValue="{Binding Path=Ticket.Bearbeiter}" DisplayMemberPath="GetVollerName"></ComboBox>
+                    <ComboBox  Grid.Row="0" Grid.Column="2" Height="20" ItemsSource="{Binding Path=KundenListe}" SelectedValue="{Binding Path=Ticket.Kunde}" DisplayMemberPath="VollerName"></ComboBox>
+                    <ComboBox  Grid.Row="1" Grid.Column="2" Height="20" ItemsSource="{Binding Path=BearbeiterListe}" SelectedValue="{Binding Path=AktuellerBearbeiter}" DisplayMemberPath="VollerName"></ComboBox>
                     <ComboBox  Grid.Row="2" Grid.Column="2" Height="20" ItemsSource="{Binding Path=Kategorien}" SelectedValue="{Binding Path=Ticket.Kategorie}" DisplayMemberPath="Bezeichnung"></ComboBox>
                     <ComboBox  Grid.Row="3" Grid.Column="2" Height="20" ItemsSource="{Binding Path=Unterkategorien}" SelectedValue="{Binding Path=Ticket.Unterkategorie}" DisplayMemberPath="Bezeichnung"></ComboBox>
                     <TextBox   Grid.Row="4" Grid.Column="2" Height="20" Text="{Binding Path=Ticket.Priorität}"></TextBox>
@@ -352,12 +352,98 @@
                         </ListView.View>
                     </ListView>
                     <ListView Grid.Column="1" Name="UnterKategorien" SelectedItem="{Binding AusgewaehlteUnterkategorie}" ItemsSource="{Binding AusgewaehlteKategorie.Unterkategorien}">
+                        <ListView.Background>
+                            <LinearGradientBrush EndPoint="0.939,0.919" StartPoint="0.061,0.081">
+                                <GradientStop Color="GhostWhite" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ListView.Background>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}"  >
+                                <Setter Property="Height" Value="24" />
+                                <Setter Property="Background" Value="#5EF4E057" />
+                                <Setter Property="Foreground" Value="#FF4B94EC"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Foreground" Value="DarkBlue" />
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFFFC704" Offset="0.986"/>
+                                                    <GradientStop Color="#FFF4E057" Offset="0.5"/>
+                                                    <GradientStop Color="#FFF4E057" Offset="0.51"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Unterkategorie" Width="200" DisplayMemberBinding="{Binding Path=Bezeichnung}"/>
+                            <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
+                                <GridViewColumn Header="Unterkategorie" Width="Auto" DisplayMemberBinding="{Binding Path=Bezeichnung}" ></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Kategorie:" Padding="10"></TextBlock>
+                        <TextBlock Text="Unterkategorie:" Padding="10"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3">
+                        <TextBox Margin="10,5" Text="{Binding Path=AusgewaehlteKategorie.Bezeichnung}"></TextBox>
+                        <TextBox Margin="10,5" Text="{Binding Path=AusgewaehlteUnterkategorie.Bezeichnung}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Margin="5">
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="auto" Click="KategorieHinzufuegenButton_Click">Hinzufügen</Button>
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="auto" Click="KategorieLoeschenButton_Click">Löschen</Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1"  Margin="5">
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="auto" Click="UnterkategorieHinzufuegenButton_Click">Hinzufügen</Button>
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="auto" Click="UnterkategorieLoeschenButton_Click">Löschen</Button>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" Grid.Row="1">
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="auto" Click="KategorieundUnterkategorieAenderungenUebernehmenButton_Click">Übernehmen</Button>
+                    </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>
