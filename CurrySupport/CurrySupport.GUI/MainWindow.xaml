@@ -393,11 +393,12 @@
                         </ListView.View>
                     </ListView>
                     <StackPanel Grid.Column="2">
-                        <TextBlock Text="Kunde:" Padding="10"></TextBlock>
-                        <TextBlock Text="Bearbeiter:" Padding="10"></TextBlock>
+                        <TextBlock Text="Kategorie:" Padding="10"></TextBlock>
+                        <TextBlock Text="Unterkategorie:" Padding="10"></TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Column="3">
                         <TextBox Margin="10,5" Text="{Binding Path=AusgewaehlteKategorie.Bezeichnung}"></TextBox>
+                        <TextBox Margin="10,5" Text="{Binding Path=AusgewaehlteUnterkategorie.Bezeichnung}"></TextBox>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Margin="5">
                         <Button Height="30"
@@ -438,6 +439,17 @@
                                 BorderThickness="1"
                                 BorderBrush="LightSkyBlue"
                                 Width="auto" Click="UnterkategorieLoeschenButton_Click">Löschen</Button>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" Grid.Row="1">
+                        <Button Height="30"
+                                FontSize="14"
+                                Padding="3"
+                                Margin="10"
+                                Background="Blue"
+                                Foreground="White"
+                                BorderThickness="1"
+                                BorderBrush="LightSkyBlue"
+                                Width="auto" Click="KategorieundUnterkategorieAenderungenUebernehmenButton_Click">Übernehmen</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>

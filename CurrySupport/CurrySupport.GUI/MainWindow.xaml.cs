@@ -162,5 +162,10 @@ namespace CurrySupport.GUI
         {
             ((KategorieViewModel)DataContext).AusgewaehlteUnterkategorieLoeschen();
         }
+
+        private void KategorieundUnterkategorieAenderungenUebernehmenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((KategorieViewModel)DataContext).AenderungenUebernehmen();
+        }
     }
 }

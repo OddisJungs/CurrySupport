@@ -96,5 +96,9 @@ namespace CurrySupport.Businesslogik
             ausgewaehlteUnterkategorie = new Unterkategorie();
         }
 
+        public void AenderungenUebernehmen()
+        {
+            dbContext.SaveChanges();
+        }
     }
 }
