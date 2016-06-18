@@ -38,9 +38,19 @@ namespace CurrySupport.Businesslogik
         public bool SaveTicket()
         {
             Ticket.Aenderungsdatum = DateTime.Now;
-            if (Ticket.Id == 0)
+            if (Ticket.Id == 0 ||AktuellerBearbeiter != Ticket.BearbeiterHistory.OrderByDescending(x => x.Zuweisungsdatum).FirstOrDefault().Person)
             {
-                dbContext.AlleTickets.Add(Ticket);
+                // Bearbeiter History um Ausgewählten Bearbeiter erweitern
+                TicketBearbeiterHistory history = new TicketBearbeiterHistory();
+                history.Person = AktuellerBearbeiter;
+                history.Zuweisungsdatum = DateTime.Now;
+                Ticket.BearbeiterHistory.Add(history);
+
+                if (Ticket.Id == 0)
+                {
+                    // Wenn ticket noch nicht existiert, neues erstellen
+                    dbContext.AlleTickets.Add(Ticket);
+                }
             }
             dbContext.SaveChanges();
             return true;
