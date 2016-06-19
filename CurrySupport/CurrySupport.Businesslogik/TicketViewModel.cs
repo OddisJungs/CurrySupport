@@ -23,7 +23,9 @@ namespace CurrySupport.Businesslogik
         {
             dbContext = new CurrySupportContext();
             Ticket = dbContext.AlleTickets.Find(ticketId);
-            AktuellerBearbeiter = Ticket.BearbeiterHistory.OrderByDescending(x => x.Zuweisungsdatum).FirstOrDefault().Person;
+            TicketBearbeiterHistory ticketBearbeiterHistory = Ticket.BearbeiterHistory.OrderByDescending(x => x.Zuweisungsdatum).FirstOrDefault();
+            if (ticketBearbeiterHistory != null)
+                AktuellerBearbeiter = ticketBearbeiterHistory.Person;
             Construct();
         }
         private void Construct()
@@ -38,7 +40,7 @@ namespace CurrySupport.Businesslogik
         public bool SaveTicket()
         {
             Ticket.Aenderungsdatum = DateTime.Now;
-            if (Ticket.Id == 0 ||AktuellerBearbeiter != Ticket.BearbeiterHistory.OrderByDescending(x => x.Zuweisungsdatum).FirstOrDefault().Person)
+            if (Ticket.Id == 0 || AktuellerBearbeiter != Ticket.BearbeiterHistory.OrderByDescending(x => x.Zuweisungsdatum).FirstOrDefault().Person)
             {
                 // Bearbeiter History um Ausgewählten Bearbeiter erweitern
                 TicketBearbeiterHistory history = new TicketBearbeiterHistory();
