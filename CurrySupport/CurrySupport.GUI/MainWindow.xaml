@@ -386,7 +386,7 @@
                            Content="Tickets:"></Label>
                     <ListView Margin="5,5,5,5" 
                               Name="KundenTicketList" 
-                              ItemsSource="{Binding AusgewaehlterKunde.Kunden_Tickets}"
+                              ItemsSource="{Binding AusgewaehlterKunde.KundenTickets}"
                               Grid.Row="3">
                         <ListView.Background>
                             <LinearGradientBrush EndPoint="0.939,0.919" StartPoint="0.061,0.081">
